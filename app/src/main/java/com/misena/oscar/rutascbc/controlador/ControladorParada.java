@@ -34,7 +34,6 @@ public class ControladorParada {
 
     public List<Paradas>  consultarTodasParadas(String nombreRuta){
         List<Paradas> para= Paradas.find(Paradas.class,"nombre = ?",nombreRuta);
-
-        return para;
+        return null;
     }
 }
