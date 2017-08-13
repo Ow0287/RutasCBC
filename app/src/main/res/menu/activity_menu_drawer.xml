@@ -12,11 +12,11 @@
             android:title="Galeria" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@mipmap/iconochat"
             android:title="Chat" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@mipmap/iconosalir"
             android:title="Salir" />
     </group>
 
