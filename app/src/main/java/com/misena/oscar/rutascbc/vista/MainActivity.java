@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             controladorRutas.llenarSitios(rutas);
 
         }
-  */
+*/
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
