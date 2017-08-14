@@ -41,7 +41,8 @@
             android:name=".MenuRutas"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Rutas"></activity>
+        <activity android:name=".Rutas" />
+        <activity android:name=".Chat"></activity>
     </application>
 
 </manifest>
