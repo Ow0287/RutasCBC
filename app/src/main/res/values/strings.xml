@@ -10,9 +10,9 @@
     <string name="txv_login">Login</string>
     <string name="btn_entrar">Entrar</string>
     <string name="title_activity_menu">Menu</string>
-
+    <string name="btn_agregar_titulacion">Agregar Titulacion</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="txv_agregar_titulacion">Agregar Titulacion</string>
     <string name="action_settings">Settings</string>
 </resources>

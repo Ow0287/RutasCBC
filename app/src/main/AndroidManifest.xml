@@ -41,7 +41,8 @@
             android:name=".vista.MenuRutas"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".vista.Rutas"></activity>
+        <activity android:name=".vista.Rutas" />
+        <activity android:name=".Galeria"></activity>
     </application>
 
 </manifest>
