@@ -22,7 +22,7 @@
         android:inputType="textEmailAddress"
         android:hint="@string/edt_correo"/>
     <EditText
-        android:id="@+id/edt_contraseña"
+        android:id="@+id/edt_contrasena"
         android:layout_width="210dp"
         android:layout_height="40dp"
         android:layout_marginTop="150dp"
@@ -30,7 +30,7 @@
         android:inputType="textPassword"
         android:hint="@string/edt_contraseña"/>
     <EditText
-        android:id="@+id/edt_repetir_contraseña"
+        android:id="@+id/edt_repetir_contrasena"
         android:layout_width="210dp"
         android:layout_height="40dp"
         android:layout_marginTop="210dp"
