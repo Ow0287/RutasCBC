@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.misena.oscar.rutascbc.MenuRutas"
+    tools:context="com.misena.oscar.rutascbc.vista.MenuRutas"
     tools:showIn="@layout/app_bar_menu">
 
     <ImageView

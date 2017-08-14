@@ -37,13 +37,15 @@
         android:layout_centerHorizontal="true"
         android:inputType="textPassword"
         android:hint="@string/edt_confirmar_contraseña"/>
+
     <Button
         android:id="@+id/btn_registrarse"
         android:layout_width="150dp"
         android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="280dp"
-       android:layout_centerHorizontal="true"
-        android:text="@string/btn_registrarse"/>
+        android:onClick="registro"
+        android:text="@string/btn_registrarse" />
     <Button
         android:id="@+id/btn_iniciar_sesion"
         android:layout_width="150dp"
