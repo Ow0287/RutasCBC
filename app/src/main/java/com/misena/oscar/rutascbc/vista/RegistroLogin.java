@@ -1,4 +1,4 @@
-package com.misena.oscar.rutascbc;
+package com.misena.oscar.rutascbc.vista;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.modelo.Usuario;
-import com.misena.oscar.rutascbc.vista.Login;
 
 public class RegistroLogin extends AppCompatActivity {
 
@@ -30,7 +30,11 @@ public class RegistroLogin extends AppCompatActivity {
     public  void registro(View v){
         String pasword=contrasena.getText().toString();
         String rePasword=repetirContrasena.getText().toString();
-
+        String nombreR=nombre.getText().toString();
+        String correoR=correo.getText().toString();
+         if (nombreR.isEmpty()&&correoR.isEmpty()&&pasword.isEmpty()&&rePasword.isEmpty()){
+             Toast.makeText(this, "Debe LLenar Todos los Campos", Toast.LENGTH_LONG).show();
+          }
         if (pasword.equals(rePasword)) {
             usuario = new Usuario(nombre.getText().toString(), correo.getText().toString(), contrasena.getText().toString());
 
@@ -44,7 +48,7 @@ public class RegistroLogin extends AppCompatActivity {
             startActivity(i);
             finish();
         }else{
-            Toast.makeText(this, "El Usuario Ya Existe", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Las Contraseñas No Son Iguales", Toast.LENGTH_LONG).show();
         }
 
     }

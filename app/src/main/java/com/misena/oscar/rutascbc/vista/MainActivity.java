@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.misena.oscar.rutascbc.R;
-import com.misena.oscar.rutascbc.RegistroLogin;
 import com.misena.oscar.rutascbc.controlador.ControladorRutas;
 import com.misena.oscar.rutascbc.modelo.Rutas;
 
