@@ -34,22 +34,28 @@ public class RegistroLogin extends AppCompatActivity {
         String correoR=correo.getText().toString();
          if (nombreR.isEmpty()&&correoR.isEmpty()&&pasword.isEmpty()&&rePasword.isEmpty()){
              Toast.makeText(this, "Debe LLenar Todos los Campos", Toast.LENGTH_LONG).show();
-          }
-        if (pasword.equals(rePasword)) {
-            usuario = new Usuario(nombre.getText().toString(), correo.getText().toString(), contrasena.getText().toString());
+          }else {
 
-            SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
+             if (pasword.equals(rePasword)) {
+                 usuario = new Usuario(nombre.getText().toString(), correo.getText().toString(), contrasena.getText().toString());
+
+                 usuario.save();
+          /*  SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor =shared.edit();
             editor.putString("nombre",usuario.getNombre());
             editor.putString("correo",usuario.getCorreo());
             editor.putString("contrasena",usuario.getContrasena());
             editor.apply();
-            Intent i =new Intent(RegistroLogin.this, Login.class);
-            startActivity(i);
-            finish();
-        }else{
-            Toast.makeText(this, "Las Contraseñas No Son Iguales", Toast.LENGTH_LONG).show();
-        }
+            */
+                 Intent i =new Intent(RegistroLogin.this, Login.class);
+                 startActivity(i);
+                 finish();
+             }else{
+                 Toast.makeText(this, "Las Contraseñas No Son Iguales", Toast.LENGTH_LONG).show();
+             }
+
+         }
+
 
     }
 

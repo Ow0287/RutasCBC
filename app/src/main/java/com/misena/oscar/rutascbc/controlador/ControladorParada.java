@@ -17,7 +17,7 @@ public class ControladorParada {
     public  void llenarParadas(ArrayList<Paradas> parada){
         for (int f=0;f<parada.size();f++){
             Paradas pa=parada.get(f);
-            pa.save();
+          //  pa.save();
 
 
 
@@ -26,14 +26,14 @@ public class ControladorParada {
 
     }
     public Paradas  consultarUnaParada(String nombreParada){
-        List<Paradas> parada= Paradas.find(Paradas.class,"nombre = ? ",nombreParada);
+    //    List<Paradas> parada= Paradas.find(Paradas.class,"nombre = ? ",nombreParada);
 
-        return parada.get(0);
+        return null;
     }
 
 
     public List<Paradas>  consultarTodasParadas(String nombreRuta){
-        List<Paradas> para= Paradas.find(Paradas.class,"nombre = ?",nombreRuta);
+        //List<Paradas> para= Paradas.find(Paradas.class,"nombre = ?",nombreRuta);
         return null;
     }
 }

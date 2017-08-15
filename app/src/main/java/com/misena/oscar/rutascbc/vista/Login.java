@@ -8,8 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.activeandroid.query.Select;
 import com.misena.oscar.rutascbc.R;
+import com.misena.oscar.rutascbc.modelo.Usuario;
 
 public class Login extends AppCompatActivity {
     EditText nombreE,contrasenaE;
@@ -28,16 +31,23 @@ public class Login extends AppCompatActivity {
     }
     public  void  login(View v){
         String nombre,contrasena;
-        SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
-        nombre=shared.getString("nombre","");
-        contrasena=shared.getString("contrasena","");
+        //SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
 
-        if(nombre.equals(nombreE.getText().toString())&&(contrasena.equals(contrasenaE.getText().toString())))
+        Usuario user = new Select().from(Usuario.class).where("nombre = ?", nombreE.getText().toString()).and("contrasena = ?", contrasenaE.getText().toString())
+                .orderBy("RANDOM()").executeSingle();
+
+       // nombre=shared.getString("nombre","");
+       // contrasena=shared.getString("contrasena","");
+
+        if(user != null)
         {
             Intent i =new Intent(Login.this, MenuRutas.class);
             startActivity(i);
             finish();
 
+        }else {
+
+            Toast.makeText(this, "EL USUARIO NO EXISTE", Toast.LENGTH_SHORT).show();
         }
 
     }

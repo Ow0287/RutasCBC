@@ -1,12 +1,10 @@
 package com.misena.oscar.rutascbc.modelo;
 
-import com.orm.SugarRecord;
-
 /**
  * Created by user on 13/08/2017.
  */
 
-public class Rutas extends SugarRecord<Rutas> {
+public class Rutas {
     private  String nombre;
     private  String ubicacionLat ,ubicacionLon;
 
