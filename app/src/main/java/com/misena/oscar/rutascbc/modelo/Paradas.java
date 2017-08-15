@@ -14,13 +14,13 @@ public class Paradas extends Model{
     @Column(name = "nombre")
     public   String nombreParada;
     @Column(name = "ruta_parada")
-    public Rutas ruta;
+    public Ruta ruta;
     @Column(name = "latitud")
     public   double ubicacionLat;
     @Column(name = "longitud")
     public   double ubicacionLon;
 
-    public Paradas(String nombreParada, Rutas ruta, double ubicacionLat, double ubicacionLon) {
+    public Paradas(String nombreParada, Ruta ruta, double ubicacionLat, double ubicacionLon) {
         this.nombreParada = nombreParada;
         this.ruta = ruta;
         this.ubicacionLat = ubicacionLat;
@@ -38,11 +38,11 @@ public class Paradas extends Model{
         this.nombreParada = nombreParada;
     }
 
-    public Rutas getRuta() {
+    public Ruta getRuta() {
         return ruta;
     }
 
-    public void setRuta(Rutas ruta) {
+    public void setRuta(Ruta ruta) {
         this.ruta = ruta;
     }
 

@@ -12,20 +12,20 @@ import java.util.List;
  * Created by user on 13/08/2017.
  */
 @Table(name = "rutas")
-public class Rutas extends Model {
+public class Ruta extends Model {
 
     private ControladorParada controladorParada;
     public ArrayList<Paradas> listParadas;
     @Column(name = "nombre")
     public String nombre;
 
-    public Rutas(String nombre) {
+    public Ruta(String nombre) {
         this.nombre = nombre;
         controladorParada = new ControladorParada();
         listParadas = new ArrayList<>();
     }
 
-    public Rutas() {
+    public Ruta() {
     }
 
     public List<Paradas> getParadas(){
