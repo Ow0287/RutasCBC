@@ -9,10 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.misena.oscar.rutascbc.R;
+import com.misena.oscar.rutascbc.controlador.ControladorParada;
 import com.misena.oscar.rutascbc.controlador.ControladorRutas;
+import com.misena.oscar.rutascbc.modelo.Paradas;
 import com.misena.oscar.rutascbc.modelo.Rutas;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,17 +25,66 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ArrayList<Rutas> rutas = new ArrayList<>();
        ControladorRutas controladorRutas = new ControladorRutas();
+        ControladorParada controladorParada=new ControladorParada();
         SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
         boolean login=shared.getBoolean("login",false);
-     //   if (controladorRutas.consultarTodasRutas("Rutas").size() == 0) {
 
 
-            //Rutas:
 
-            //rutas.add(new Rutas("Cuarta con 21 y 28",  "2.447865", "-76.606308"));
+       if (controladorRutas.consultarTodasRutas().size() == 0) {
+
+           //Rutas:
+           rutas.add(new Rutas("Cuarta con 21 y 28"));
+           rutas.get(0).addParada(new Paradas("Donde Ponen Las Garzas",rutas.get(0),00000.000,0000.000));
+           rutas.get(0).addParada(new Paradas("Drogueria 21",rutas.get(0),00000.000,0000.000));
+           rutas.get(0).addParada(new Paradas("Drogueria 28",rutas.get(0),00000.000,0000.000));
+           rutas.get(0).addParada(new Paradas("Tienda",rutas.get(0),00000.000,0000.000));
+           rutas.get(0).addParada(new Paradas("Colegio La Policia",rutas.get(0),00000.000,0000.000));
+           rutas.get(0).addParada(new Paradas("Rosita Davila",rutas.get(0),00000.000,0000.000));
 
 
-            //controladorRutas.llenarSitios(rutas);
+           rutas.add(new Rutas("Villa Miriam Por Fuera"));
+           rutas.get(1).addParada(new Paradas("Primera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(1).addParada(new Paradas("Segunda Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(1).addParada(new Paradas("Tercera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(1).addParada(new Paradas("cuarta parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(1).addParada(new Paradas("Quinta Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(1).addParada(new Paradas("sexta Parada",rutas.get(0),00000.000,0000.000));
+           rutas.add(new Rutas("Bello Horizonte"));
+           rutas.get(2).addParada(new Paradas("Primera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(2).addParada(new Paradas("Segunda Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(2).addParada(new Paradas("Tercera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(2).addParada(new Paradas("cuarta parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(2).addParada(new Paradas("Quinta Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(2).addParada(new Paradas("sexta Parada",rutas.get(0),00000.000,0000.000));
+           rutas.add(new Rutas("Mareiwa"));
+           rutas.get(3).addParada(new Paradas("Primera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(3).addParada(new Paradas("Segunda Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(3).addParada(new Paradas("Tercera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(3).addParada(new Paradas("cuarta parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(3).addParada(new Paradas("Quinta Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(3).addParada(new Paradas("sexta Parada",rutas.get(0),00000.000,0000.000));
+           rutas.add(new Rutas("La Paz"));
+           rutas.get(4).addParada(new Paradas("Primera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(4).addParada(new Paradas("Segunda Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(4).addParada(new Paradas("Tercera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(4).addParada(new Paradas("cuarta parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(4).addParada(new Paradas("Quinta Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(4).addParada(new Paradas("sexta Parada",rutas.get(0),00000.000,0000.000));
+
+
+           controladorRutas.llenarSitios(rutas);
+           controladorParada.llenarParadas(rutas.get(0).listParadas);
+           controladorParada.llenarParadas(rutas.get(1).listParadas);
+           controladorParada.llenarParadas(rutas.get(2).listParadas);
+           controladorParada.llenarParadas(rutas.get(3).listParadas);
+           controladorParada.llenarParadas(rutas.get(4).listParadas);
+       }
+
+
+
+
+
         if (login){
 
                 Intent i =new Intent(MainActivity.this,MenuRutas.class);
