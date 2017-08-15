@@ -15,7 +15,7 @@ public class Rutas extends Model {
     @Column(name = "nombre")
     public String nombre;
 
-    public Rutas(String nombre, String ubicacionLat, String ubicacionLon) {
+    public Rutas(String nombre) {
         this.nombre = nombre;
     }
 
