@@ -21,7 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".vista.RegistroLogin" />
+        <activity android:name=".vista.RegistroLogin"
+            android:label="Registro"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".vista.Login"
             android:label="@string/title_activity_login"
@@ -30,7 +32,8 @@
             android:name=".vista.MenuRutas"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".vista.Rutas" />
+        <activity android:name=".vista.Rutas"
+            android:label="Rutas"/>
         <activity android:name=".Galeria"></activity>
     </application>
 
