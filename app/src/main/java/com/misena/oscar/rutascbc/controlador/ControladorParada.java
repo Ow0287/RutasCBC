@@ -19,8 +19,6 @@ public class ControladorParada {
             Paradas pa=parada.get(f);
             pa.save();
         }
-
-
     }
     public Paradas  consultarUnaParada(String nombreParada){
 
