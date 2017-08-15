@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the MenuRutas-Activity. */
-                Intent mainIntent = new Intent(MainActivity.this,RegistroLogin.class);
+                Intent mainIntent = new Intent(MainActivity.this,Login.class);
                 MainActivity.this.startActivity(mainIntent);
                 MainActivity.this.finish();
             }
-        }, 5000);
+        }, 3000);
 
     }
 }

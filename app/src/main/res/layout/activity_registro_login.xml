@@ -107,14 +107,16 @@
         android:text="@string/btn_registrarse"
         android:background="@color/color_meenu"
         android:textColor="@color/cardview_light_background"/>
+
     <Button
         android:id="@+id/btn_iniciar_sesion"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"
-       android:layout_centerHorizontal="true"
-        android:text="@string/btn_iniciar_sesion"
         android:background="@color/color_meenu"
-        android:textColor="@color/cardview_light_background"/>
+        android:onClick="iniciarSecion"
+        android:text="@string/btn_iniciar_sesion"
+        android:textColor="@color/cardview_light_background" />
 
 </RelativeLayout>

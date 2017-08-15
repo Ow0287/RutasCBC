@@ -57,6 +57,13 @@ public class RegistroLogin extends AppCompatActivity {
          }
 
 
+
+    }
+    public  void  iniciarSecion(View v){
+        Intent i =new Intent(RegistroLogin.this, Login.class);
+        startActivity(i);
+        finish();
+
     }
 
 
