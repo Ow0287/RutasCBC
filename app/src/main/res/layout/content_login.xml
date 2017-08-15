@@ -57,21 +57,21 @@
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="230dp"
         android:onClick="login"
         android:text="@string/btn_entrar"
-        android:background="@color/color_meenu"
+        android:background="@drawable/selector_botones"
         android:textColor="@color/cardview_light_background"/>
 
     <Button
         android:id="@+id/btn_registrarse"
         android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="320dp"
         android:onClick="registroLogin"
         android:text="@string/btn_registrarse"
-        android:background="@color/color_meenu"
+        android:background="@drawable/selector_botones"
         android:textColor="@color/cardview_light_background"/>
 
 

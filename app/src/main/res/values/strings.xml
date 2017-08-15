@@ -16,4 +16,5 @@
     <string name="txv_agregar_titulacion">Agregar Titulacion</string>
     <string name="action_settings">Cerrar Sesion</string>
     <string name="txv_registro">Registro</string>
+    <string name="title_activity_mapa">Map</string>
 </resources>
