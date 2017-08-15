@@ -34,10 +34,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".vista.Rutas"
             android:label="Rutas"/>
-        <activity android:name="vista.Galeria"
+        <activity android:name=".vista.Galeria"
             android:label="Galeria"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="vista.Chat"
+        <activity android:name=".vista.Chat"
                 android:label="Chat"
                 android:theme="@style/AppTheme.NoActionBar" >
 
