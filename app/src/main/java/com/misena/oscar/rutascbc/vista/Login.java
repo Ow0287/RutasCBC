@@ -31,7 +31,8 @@ public class Login extends AppCompatActivity {
     }
     public  void  login(View v){
         String nombre,contrasena;
-        //SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
+        //
+
 
         Usuario user = new Select().from(Usuario.class).where("nombre = ?", nombreE.getText().toString()).and("contrasena = ?", contrasenaE.getText().toString())
                 .orderBy("RANDOM()").executeSingle();
@@ -41,6 +42,10 @@ public class Login extends AppCompatActivity {
 
         if(user != null)
         {
+            SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor =shared.edit();
+           editor.putBoolean("login",true);
+            editor.apply();
             Intent i =new Intent(Login.this, MenuRutas.class);
             startActivity(i);
             finish();

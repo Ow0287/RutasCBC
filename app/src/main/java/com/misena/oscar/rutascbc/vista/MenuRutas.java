@@ -1,14 +1,19 @@
 package com.misena.oscar.rutascbc.vista;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.misena.oscar.rutascbc.R;
 
@@ -60,6 +65,23 @@ public class MenuRutas extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            AlertDialog.Builder dialogo=new AlertDialog.Builder(MenuRutas.this);
+            dialogo.setMessage("Desea Cerrar Sesion");
+            dialogo.setTitle("Cerrar Sesion");
+            dialogo.setNeutralButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            }).setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                 dialogo();
+
+                }
+            });
+            dialogo.create();
+            dialogo.show();
             return true;
         }
 
@@ -94,5 +116,20 @@ public class MenuRutas extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
     }
+    public  void dialogo(){
+        SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
+        boolean login=shared.getBoolean("login",false);
+        SharedPreferences.Editor editor =shared.edit();
+        editor.putBoolean("login",false);
+        editor.apply();
+
+        Intent intent=new Intent (MenuRutas.this,Login.class);
+        startActivity(intent);
+        finish();
+
+
+    }
+
 }

@@ -40,12 +40,7 @@ public class RegistroLogin extends AppCompatActivity {
                  usuario = new Usuario(nombre.getText().toString(), correo.getText().toString(), contrasena.getText().toString());
 
                  usuario.save();
-          /*  SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor =shared.edit();
-            editor.putString("nombre",usuario.getNombre());
-            editor.putString("correo",usuario.getCorreo());
-            editor.putString("contrasena",usuario.getContrasena());
-            editor.apply();
+          /*
             */
                  Intent i =new Intent(RegistroLogin.this, Login.class);
                  startActivity(i);
@@ -59,12 +54,7 @@ public class RegistroLogin extends AppCompatActivity {
 
 
     }
-    public  void  iniciarSecion(View v){
-        Intent i =new Intent(RegistroLogin.this, Login.class);
-        startActivity(i);
-        finish();
 
-    }
 
 
 }

@@ -1,9 +1,12 @@
 package com.misena.oscar.rutascbc.vista;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.controlador.ControladorRutas;
@@ -19,27 +22,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ArrayList<Rutas> rutas = new ArrayList<>();
        ControladorRutas controladorRutas = new ControladorRutas();
+        SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
+        boolean login=shared.getBoolean("login",false);
      //   if (controladorRutas.consultarTodasRutas("Rutas").size() == 0) {
 
 
             //Rutas:
 
-            rutas.add(new Rutas("Cuarta con 21 y 28",  "2.447865", "-76.606308"));
+            //rutas.add(new Rutas("Cuarta con 21 y 28",  "2.447865", "-76.606308"));
 
 
-            controladorRutas.llenarSitios(rutas);
+            //controladorRutas.llenarSitios(rutas);
+        if (login){
 
-//        }
+                Intent i =new Intent(MainActivity.this,MenuRutas.class);
+                startActivity(i);
+                finish();
 
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run() {
+
+
+        }else {
+            new Handler().postDelayed(new Runnable(){
+                @Override
+                public void run() {
                 /* Create an Intent that will start the MenuRutas-Activity. */
-                Intent mainIntent = new Intent(MainActivity.this,Login.class);
-                MainActivity.this.startActivity(mainIntent);
-                MainActivity.this.finish();
-            }
-        }, 3000);
+                    Intent mainIntent = new Intent(MainActivity.this,Login.class);
+                    MainActivity.this.startActivity(mainIntent);
+                    MainActivity.this.finish();
+                }
+            }, 3000);
 
-    }
-}
+        }
+        }
+
+       }
+
+
