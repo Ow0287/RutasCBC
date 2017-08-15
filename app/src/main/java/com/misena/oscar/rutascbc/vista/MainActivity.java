@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.controlador.ControladorParada;
@@ -27,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
         boolean login=shared.getBoolean("login",false);
 
-
-
        if (controladorRutas.consultarTodasRutas().size() == 0) {
-
+/*
            //Rutas:
            rutas.add(new Ruta("Cuarta con 21 y 28"));
            rutas.get(0).addParada(new Paradas("Donde Ponen Las Garzas",rutas.get(0),00000.000,0000.000));
@@ -77,11 +76,10 @@ public class MainActivity extends AppCompatActivity {
            controladorParada.llenarParadas(rutas.get(2).listParadas);
            controladorParada.llenarParadas(rutas.get(3).listParadas);
            controladorParada.llenarParadas(rutas.get(4).listParadas);
-       }
+  */
 
-
-
-
+           Log.e("las rutas estan", "vacias");
+       }else {Log.e("si hay", "rutas");}
 
         if (login){
 
