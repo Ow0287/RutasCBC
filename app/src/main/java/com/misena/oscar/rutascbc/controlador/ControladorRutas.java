@@ -6,10 +6,6 @@ import com.misena.oscar.rutascbc.modelo.Rutas;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by user on 13/08/2017.
- */
-
 public class ControladorRutas {
 
     public  void llenarSitios(ArrayList<Rutas> rutas){
@@ -23,13 +19,11 @@ public class ControladorRutas {
 
     public Rutas consultarUnaRuta(String nombre){
 
-        Rutas ruta= new Select().from(Rutas.class).where("nombre = ?", nombre).executeSingle();
-        return ruta;
+        return new Select().from(Rutas.class).where("nombre = ?", nombre).executeSingle();
     }
 
     public List<Rutas>  consultarTodasRutas(){
-        List<Rutas> rut = new Select().all().from(Rutas.class).execute();
 
-        return rut;
+        return new Select().all().from(Rutas.class).execute();
     }
 }
