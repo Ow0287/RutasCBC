@@ -54,10 +54,7 @@
             android:name="vista.Chat"
             android:label="Chat"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".GaleriaAministrador"
-            android:label="Administrador"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -71,9 +68,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Mapa"
+            android:name=".vista.Mapa"
             android:label="@string/title_activity_mapa" />
-        <activity android:name=".GaleriaAministrador"></activity>
+        <activity android:name=".vista.GaleriaAministrador"
+            android:label="Administrador"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
