@@ -17,4 +17,5 @@
     <string name="action_settings">Cerrar Sesion</string>
     <string name="txv_registro">Registro</string>
     <string name="title_activity_mapa">Map</string>
+    <string name="edt_titulaacion">Titulacion</string>
 </resources>
