@@ -1,21 +1,33 @@
 package com.misena.oscar.rutascbc.modelo;
 
 
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 
 /**
  * Created by user on 13/08/2017.
  */
+@Table(name = "parada")
+public class Paradas extends Model{
 
-public class Paradas{
+    @Column(name = "nombre")
+    public   String nombreParada;
+    @Column(name = "ruta_parada")
+    public Rutas ruta;
+    @Column(name = "latitud")
+    public   double ubicacionLat;
+    @Column(name = "longitud")
+    public   double ubicacionLon;
 
-    private  String nombreParada,nombreRuta;
-    private  String ubicacionLat ,ubicacionLon;
-
-    public Paradas(String nombreParada, String nombreRuta, String ubicacionLat, String ubicacionLon) {
+    public Paradas(String nombreParada, Rutas ruta, double ubicacionLat, double ubicacionLon) {
         this.nombreParada = nombreParada;
-        this.nombreRuta = nombreRuta;
+        this.ruta = ruta;
         this.ubicacionLat = ubicacionLat;
         this.ubicacionLon = ubicacionLon;
+    }
+
+    public Paradas() {
     }
 
     public String getNombreParada() {
@@ -26,27 +38,27 @@ public class Paradas{
         this.nombreParada = nombreParada;
     }
 
-    public String getNombreRuta() {
-        return nombreRuta;
+    public Rutas getRuta() {
+        return ruta;
     }
 
-    public void setNombreRuta(String nombreRuta) {
-        this.nombreRuta = nombreRuta;
+    public void setRuta(Rutas ruta) {
+        this.ruta = ruta;
     }
 
-    public String getUbicacionLat() {
+    public double getUbicacionLat() {
         return ubicacionLat;
     }
 
-    public void setUbicacionLat(String ubicacionLat) {
+    public void setUbicacionLat(double ubicacionLat) {
         this.ubicacionLat = ubicacionLat;
     }
 
-    public String getUbicacionLon() {
+    public double getUbicacionLon() {
         return ubicacionLon;
     }
 
-    public void setUbicacionLon(String ubicacionLon) {
+    public void setUbicacionLon(double ubicacionLon) {
         this.ubicacionLon = ubicacionLon;
     }
 }

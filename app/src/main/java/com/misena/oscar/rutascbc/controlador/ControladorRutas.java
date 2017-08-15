@@ -1,36 +1,29 @@
 package com.misena.oscar.rutascbc.controlador;
 
+import com.activeandroid.query.Select;
 import com.misena.oscar.rutascbc.modelo.Rutas;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by user on 13/08/2017.
- */
-
 public class ControladorRutas {
+
     public  void llenarSitios(ArrayList<Rutas> rutas){
         for (int f=0;f<rutas.size();f++){
             Rutas lu=rutas.get(f);
-          //  lu.save();
-
-
-
+            lu.save();
         }
 
 
     }
-    public Rutas  consultarUnaRuta(String nombre){
-//        List<Rutas> ruta= Rutas.find(Rutas.class,"nombre = ? ",nombre);
 
-        return null;
+    public Rutas consultarUnaRuta(String nombre){
+
+        return new Select().from(Rutas.class).where("nombre = ?", nombre).executeSingle();
     }
 
+    public List<Rutas>  consultarTodasRutas(){
 
-    public List<Rutas>  consultarTodasRutas(String nombre){
-  //      List<Rutas> rut= Rutas.find(Rutas.class,"tipo = ?",nombre);
-
-        return null;
+        return new Select().all().from(Rutas.class).execute();
     }
 }
