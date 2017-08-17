@@ -15,6 +15,14 @@
         android:textSize="@dimen/txv_login"
         android:textStyle="bold"/>
 
+    <ImageView
+        android:id="@+id/img_usuario"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        app:srcCompat="@mipmap/usuario"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"/>
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,6 +42,14 @@
             android:textStyle="bold" />
 
     </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/img_email"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="130dp"
+        app:srcCompat="@mipmap/iconodeemail" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
@@ -55,6 +71,13 @@
             android:textStyle="bold" />
     </android.support.design.widget.TextInputLayout>
 
+    <ImageView
+        android:id="@+id/img_contra"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="193dp"
+        app:srcCompat="@mipmap/candado" />
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,7 +98,13 @@
 
             android:textStyle="bold"/>
     </android.support.design.widget.TextInputLayout>
-
+    <ImageView
+        android:id="@+id/img_repetir_contra"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="255dp"
+        app:srcCompat="@mipmap/candado" />
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,15 +137,6 @@
         android:background="@drawable/selector_botones"
         android:textColor="@color/cardview_light_background"/>
 
-    <Button
-        android:id="@+id/btn_iniciar_sesion"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="420dp"
-        android:background="@drawable/selector_botones"
-        android:onClick="iniciarSecion"
-        android:text="@string/btn_iniciar_sesion"
-        android:textColor="@color/cardview_light_background" />
+
 
 </RelativeLayout>
