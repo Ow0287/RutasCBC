@@ -16,6 +16,14 @@
     android:layout_marginTop="20dp"
     android:textSize="@dimen/txv_login"
     android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/img_login_usuario"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="65dp"
+        app:srcCompat="@mipmap/usuario" />
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
