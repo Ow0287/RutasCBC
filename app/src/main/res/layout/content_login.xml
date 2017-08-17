@@ -59,6 +59,13 @@
             android:textStyle="bold"/>
     </android.support.design.widget.TextInputLayout>
 
+    <ImageView
+        android:id="@+id/img_login_contra"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="156dp"
+        app:srcCompat="@mipmap/candado" />
 
     <Button
         android:id="@+id/btn_entrar"
@@ -74,7 +81,7 @@
     <Button
         android:id="@+id/btn_registrarse"
         android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="320dp"
         android:onClick="registroLogin"
