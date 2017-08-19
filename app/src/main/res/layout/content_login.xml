@@ -65,7 +65,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="156dp"
-        app:srcCompat="@mipmap/candado" />
+        app:srcCompat="@mipmap/agregartitulacion" />
 
     <Button
         android:id="@+id/btn_entrar"
