@@ -35,6 +35,9 @@
             android:name=".vista.RegistroLogin"
             android:label="Registro"
             android:parentActivityName=".vista.Login"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+               android:value=".vista.Login" />
         <activity
             android:name=".vista.Login"
             android:label="@string/title_activity_login"
