@@ -9,24 +9,26 @@
     <RelativeLayout
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="160dp"
+        android:layout_marginTop="30dp"
         android:background="@color/color_meenu"
-        tools:ignore="HardcodedText"
-        android:orientation="horizontal">
+        android:onClick="fotos"
+        android:orientation="horizontal"
+        tools:ignore="HardcodedText">
 
         <ImageView
             android:id="@+id/img_agregar_titulacion"
             android:layout_width="70dp"
             android:layout_height="50dp"
             app:srcCompat="@mipmap/agregartitulacion" />
+
         <TextView
             android:id="@+id/txv_agregar_titulacion"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="@string/txv_agregar_titulacion"
             android:layout_marginLeft="70dp"
+            android:text="@string/txv_agregar_titulacion"
             android:textColor="@color/cardview_light_background"
-            android:textSize="@dimen/txv_tarjeta"/>
+            android:textSize="@dimen/txv_tarjeta" />
     </RelativeLayout>
 </RelativeLayout>
