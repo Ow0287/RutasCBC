@@ -64,8 +64,8 @@
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="156dp"
-        app:srcCompat="@mipmap/agregartitulacion" />
+        android:layout_marginTop="160dp"
+        app:srcCompat="@mipmap/key" />
 
     <Button
         android:id="@+id/btn_entrar"
