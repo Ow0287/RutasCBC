@@ -34,7 +34,7 @@
         <activity
             android:name=".vista.RegistroLogin"
             android:label="Registro"
-            />
+            android:parentActivityName=".vista.Login"/>
         <activity
             android:name=".vista.Login"
             android:label="@string/title_activity_login"
