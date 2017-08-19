@@ -10,8 +10,8 @@ public class ControladorRutas {
 
     public  void llenarSitios(ArrayList<Ruta> rutas){
         for (int f=0;f<rutas.size();f++){
-            Ruta lu=rutas.get(f);
-            lu.save();
+            Ruta ru=rutas.get(f);
+            ru.save();
         }
 
 
