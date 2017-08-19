@@ -37,7 +37,7 @@ ArrayList<Galeria> arrayListGaleria;
 //adapterGaleria =new A
         adapterGaleria=new AdapterGaleria();
        listaGale=(ListView)findViewById(R.id.lista_galeria);
-        listaGale.setAdapter(adapterGaleria);
+//        listaGale.setAdapter(adapterGaleria);
 
 
 
