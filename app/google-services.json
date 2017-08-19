@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "164599121398",
+    "firebase_url": "https://rutas-e0e09.firebaseio.com",
+    "project_id": "rutas-e0e09",
+    "storage_bucket": "rutas-e0e09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164599121398:android:d06420b27d7fc56e",
+        "android_client_info": {
+          "package_name": "com.misena.oscar.rutascbc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164599121398-ea7qvobotibsm1hesqmkp7krmf95c3ff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCneYu1e7dZHmBiEv_g9WqFfN1K5S6YwfA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,7 +10,11 @@ import com.activeandroid.annotation.Table;
 @Table(name = "galerias")
 public class ModelGaleria extends Model{
     @Column(name = "nombre")
-    public String ficha,nombre,foto;
+    public String nombre;
+    @Column(name = "ficha")
+    public String ficha;
+    @Column(name = "foto")
+    public String foto;
 
     public ModelGaleria(String ficha, String nombre, String foto) {
         this.ficha = ficha;
