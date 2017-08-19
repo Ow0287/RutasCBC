@@ -30,5 +30,11 @@
             android:text="@string/txv_agregar_titulacion"
             android:textColor="@color/cardview_light_background"
             android:textSize="@dimen/txv_tarjeta" />
+
     </RelativeLayout>
+    <ListView
+        android:id="@+id/lista_galeria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"></ListView>
 </RelativeLayout>
