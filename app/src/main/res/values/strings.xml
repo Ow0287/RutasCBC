@@ -18,4 +18,6 @@
     <string name="txv_registro">Registro</string>
     <string name="title_activity_mapa">Map</string>
     <string name="edt_titulaacion">Titulacion</string>
+    <string name="btn_registrar_titulacion">Registrar Titulacion</string>
+    <string name="ficha">Ficha</string>
 </resources>
