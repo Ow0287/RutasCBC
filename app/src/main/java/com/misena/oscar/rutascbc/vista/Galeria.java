@@ -23,9 +23,11 @@ public class Galeria extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.img_tarjeta);
 
     }
-    public  void fotos(View v){
-        Intent i =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(i,1);
+
+    public  void irfotos(View v){
+        Intent i =new Intent(Galeria.this,GaleriaAministrador.class);
+        startActivity(i);
+        finish();
 
     }
 

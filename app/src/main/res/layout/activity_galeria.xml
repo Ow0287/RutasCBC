@@ -12,7 +12,7 @@
         android:layout_marginLeft="160dp"
         android:layout_marginTop="30dp"
         android:background="@color/color_meenu"
-        android:onClick="fotos"
+        android:onClick="irfotos"
         android:orientation="horizontal"
         tools:ignore="HardcodedText">
 
