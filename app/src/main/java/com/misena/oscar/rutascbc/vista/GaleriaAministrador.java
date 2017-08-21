@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class GaleriaAministrador extends AppCompatActivity {
     EditText nombre, ficha;
+
     ImageView imageView;
     Bitmap bitmap;
     ControladorGaleria controladorGaleria;
@@ -36,7 +37,7 @@ public class GaleriaAministrador extends AppCompatActivity {
         setContentView(R.layout.activity_galeria_aministrador);
         nombre = (EditText) findViewById(R.id.edt_titulacion);
         ficha = (EditText) findViewById(R.id.edt_ficha);
-        imageView = (ImageView) findViewById(R.id.img_tarjeta);
+        imageView = (ImageView) findViewById(R.id.img_foto_titulacion);
         controladorGaleria = new ControladorGaleria();
   //      storage = FirebaseStorage.getInstance();
     //    storageRef = storage.getReference();
@@ -52,10 +53,9 @@ public class GaleriaAministrador extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) ;
         {
-            Bitmap foto = (Bitmap) data.getExtras().get("data");
-            bitmap = foto;
+            bitmap = (Bitmap) data.getExtras().get("data");
 
-            imageView.setImageBitmap(foto);
+            imageView.setImageBitmap(bitmap);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
            b= baos.toByteArray();
