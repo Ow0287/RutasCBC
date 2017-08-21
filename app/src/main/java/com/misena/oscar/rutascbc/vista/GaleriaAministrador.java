@@ -15,6 +15,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.controlador.ControladorGaleria;
 import com.misena.oscar.rutascbc.modelo.ModelGaleria;
@@ -29,8 +34,8 @@ public class GaleriaAministrador extends AppCompatActivity {
     Bitmap bitmap;
     ControladorGaleria controladorGaleria;
     byte[] b;
-//    FirebaseStorage storage ;
-//    StorageReference storageRef ;
+    FirebaseStorage storage ;
+   StorageReference storageRef ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +44,8 @@ public class GaleriaAministrador extends AppCompatActivity {
         ficha = (EditText) findViewById(R.id.edt_ficha);
         imageView = (ImageView) findViewById(R.id.img_foto_titulacion);
         controladorGaleria = new ControladorGaleria();
-  //      storage = FirebaseStorage.getInstance();
-    //    storageRef = storage.getReference();
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
     }
 
     public void fotos(View v) {
@@ -79,10 +84,10 @@ public class GaleriaAministrador extends AppCompatActivity {
 
     }
     public void registrarTitulacion(View view){
-        String nombreF=nombre.getText().toString();
-        String numFicha=ficha.getText().toString();
-/*
-        StorageReference imagesRef = storageRef.child("images/"+numFicha);
+        final String nombreF=nombre.getText().toString();
+        final String numFicha=ficha.getText().toString();
+
+        StorageReference imagesRef = storageRef.child("img/"+numFicha);
 
         UploadTask task = imagesRef.putBytes(b);
         task.addOnFailureListener(new OnFailureListener() {
@@ -95,12 +100,18 @@ public class GaleriaAministrador extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                 Toast.makeText(GaleriaAministrador.this, "Foto Subida Satisfactoriamente", Toast.LENGTH_SHORT).show();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference refere = database.getReference("rutas");
+                refere.child("ruta"+nombreF).child("nombre").setValue(nombreF);
+                refere.child("ruta"+nombreF).child("ficha").setValue(numFicha);
+                refere.child("ruta"+nombreF).child("ruta").setValue("img/"+numFicha);
+
                 Intent i =new Intent(GaleriaAministrador.this,Galeria.class);
                 startActivity(i);
 
             }
         });
-*/
+
 
 
     }

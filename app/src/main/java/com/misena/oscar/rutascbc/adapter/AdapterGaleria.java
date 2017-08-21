@@ -56,8 +56,10 @@ public class AdapterGaleria extends BaseAdapter {
         Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
         ImageView imageView = fila.findViewById(R.id.img_tarjeta);
         imageView.setImageBitmap(bitmap);
-        TextView tvLista=(TextView)fila.findViewById(R.id.txv_lista);
+        TextView tvLista=(TextView)fila.findViewById(R.id.txv_ficha);
         tvLista.setText(galerias.get(i).getNombre());
+        TextView tvList=(TextView)fila.findViewById(R.id.txv_numero_ficha);
+        tvList.setText(galerias.get(i).getFicha());
         return fila;
     }
 }

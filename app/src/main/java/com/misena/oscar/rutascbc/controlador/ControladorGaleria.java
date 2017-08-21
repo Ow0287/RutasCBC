@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 public class ControladorGaleria  {
-    public ArrayList<ModelGaleria> listGaleria;
+    public List<ModelGaleria> listGaleria;
 
 
     public void llenarGaleria(ArrayList<ModelGaleria> galerias) {
@@ -26,7 +26,7 @@ public class ControladorGaleria  {
         }
     }
 
-    public List<Ruta> consultarTodasRutas(){
+    public List<ModelGaleria> consultarGaleria(){
 
         return new Select().all().from(ModelGaleria.class).execute();
     }

@@ -13,6 +13,10 @@ public class ModelGaleria extends Model{
     public String nombre;
     @Column(name = "ficha")
     public String ficha;
+
+    public ModelGaleria() {
+    }
+
     @Column(name = "foto")
     public String foto;
 
