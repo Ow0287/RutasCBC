@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
            rutas.add(new Ruta("Cuarta con 21 y 28"));
            rutas.get(0).addParada(new Paradas("I.C.B.F",rutas.get(0),10.473426, -73.248041));
            rutas.get(0).addParada(new Paradas("Parque De Los Varaos",rutas.get(0),10.467208, -73.243613));
-           rutas.get(0).addParada(new Paradas("Donde Ponen Las Garzas",rutas.get(0),00000.000,0000.000));
-           rutas.get(0).addParada(new Paradas("Cuarta Con 21",rutas.get(0),00000.000,0000.000));
+           rutas.get(0).addParada(new Paradas("Donde Ponen Las Garzas",rutas.get(0),10.467843, -73.236780));
+           rutas.get(0).addParada(new Paradas("Cuarta Con 21",rutas.get(0),10.465220, -73.232883));
            rutas.get(0).addParada(new Paradas("Colegio La Policia",rutas.get(0),00000.000,0000.000));
            rutas.get(0).addParada(new Paradas("Rosita Davila",rutas.get(0),00000.000,0000.000));
 
