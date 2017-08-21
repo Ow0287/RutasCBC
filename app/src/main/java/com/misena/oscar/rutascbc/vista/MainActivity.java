@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
            rutas.get(3).addParada(new Paradas("Quinta Parada",rutas.get(0),00000.000,0000.000));
            rutas.get(3).addParada(new Paradas("sexta Parada",rutas.get(0),00000.000,0000.000));
            rutas.add(new Ruta("La Paz"));
-           rutas.get(4).addParada(new Paradas("Primera Parada",rutas.get(0),00000.000,0000.000));
+           rutas.get(4).addParada(new Paradas("Primera Parada",rutas.get(0),10.387109, -73.170548));
            rutas.get(4).addParada(new Paradas("Segunda Parada",rutas.get(0),00000.000,0000.000));
            rutas.get(4).addParada(new Paradas("Tercera Parada",rutas.get(0),00000.000,0000.000));
            rutas.get(4).addParada(new Paradas("cuarta parada",rutas.get(0),00000.000,0000.000));
