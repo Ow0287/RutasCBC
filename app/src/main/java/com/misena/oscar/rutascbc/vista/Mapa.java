@@ -10,10 +10,17 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.misena.oscar.rutascbc.R;
+import com.misena.oscar.rutascbc.controlador.ControladorRutas;
+import com.misena.oscar.rutascbc.modelo.Paradas;
+import com.misena.oscar.rutascbc.modelo.Ruta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Mapa extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    ControladorRutas controladorRutas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        controladorRutas =new ControladorRutas();
     }
 
 
@@ -38,10 +46,14 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        String ruta=getIntent().getStringExtra("nombre");
+        Ruta rutas=controladorRutas.consultarUnaRuta(ruta);
+        List<Paradas> parada=rutas.getParadas();
+        for (int f=0;f<parada.size();f++){
+           mMap.addMarker(new MarkerOptions().position(new LatLng(parada.get(f).getUbicacionLat(),parada.get(f).getUbicacionLon())).title(parada.get(f).getNombreParada()));
+        }
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(parada.get(0).getUbicacionLat(),parada.get(0).getUbicacionLon())));
+
     }
 }
