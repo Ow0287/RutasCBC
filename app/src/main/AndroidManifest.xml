@@ -45,6 +45,7 @@
         <activity
             android:name=".vista.MenuRutas"
             android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar"
             />
         <activity
             android:name=".vista.Rutas"
@@ -54,18 +55,15 @@
             android:name=".vista.Galeria"
             android:label="Galeria"
 
-            android:parentActivityName=".vista.MenuRutas">
+            >
 
 
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".vista.MenuRutas" />
         </activity>
         <activity
             android:name=".vista.Chat"
             android:label="Chat"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".vista.MenuRutas"/>
+            />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
