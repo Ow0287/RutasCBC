@@ -54,9 +54,11 @@
         <activity
             android:name=".vista.Galeria"
             android:label="Galeria"
-
+            android:parentActivityName=".vista.MenuRutas"
             >
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".vista.MenuRutas" />
 
         </activity>
         <activity
