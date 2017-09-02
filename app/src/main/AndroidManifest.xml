@@ -41,19 +41,26 @@
         <activity
             android:name=".vista.Login"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
+             />
         <activity
             android:name=".vista.MenuRutas"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar" />
+            />
         <activity
             android:name=".vista.Rutas"
             android:label="Rutas" />
+
         <activity
             android:name=".vista.Galeria"
             android:label="Galeria"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".vista.MenuRutas"/>
+
+            android:parentActivityName=".vista.MenuRutas">
+
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".vista.MenuRutas" />
+        </activity>
         <activity
             android:name=".vista.Chat"
             android:label="Chat"
@@ -76,8 +83,7 @@
             android:name=".vista.Mapa"
             android:label="@string/title_activity_mapa" />
         <activity android:name=".vista.GaleriaAministrador"
-            android:label="Administrador"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="Administrador"></activity>
     </application>
 
 </manifest>
