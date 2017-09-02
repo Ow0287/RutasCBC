@@ -2,6 +2,7 @@ package com.misena.oscar.rutascbc.vista;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.activeandroid.query.Delete;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +48,7 @@ public class Galeria extends AppCompatActivity {
     ListView listaGale;
     FirebaseStorage storage ;
     StorageReference storageRef ;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +61,13 @@ public class Galeria extends AppCompatActivity {
         controladorGaleria =new ControladorGaleria();
         galeria=new ModelGaleria();
         arrayListGaleria=new ArrayList<>();
-
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword("ing.odvega@gmail.com", "12345678").addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.e("inicio ","completo");
+            }
+        });
         refere = refere.child("rutas");
         refere.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -70,6 +83,14 @@ public class Galeria extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+
     }
 
     private void aux(DataSnapshot data) {
@@ -92,7 +113,7 @@ public class Galeria extends AppCompatActivity {
                     galeria.setNombre(nombre);
                     galeria.setFicha(ficha);
                     galeria.save();
-
+Log.e("descargar","fotos success");
                 }
             });
         }
@@ -100,7 +121,8 @@ public class Galeria extends AppCompatActivity {
 
     }
     private void mostrarGaleria() {
-        arrayListGaleria=controladorGaleria.consultarGaleria();
+        arrayListGaleria = controladorGaleria.consultarGaleria();
+        Log.e("tamaño","galeria es " + String.valueOf(arrayListGaleria.size()));
         adapterGaleria=new AdapterGaleria(arrayListGaleria, this);
         listaGale.setAdapter(adapterGaleria);
 
