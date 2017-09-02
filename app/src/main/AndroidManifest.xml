@@ -49,13 +49,17 @@
             />
         <activity
             android:name=".vista.Rutas"
-            android:label="Rutas" />
+            android:label="Rutas"
+        android:parentActivityName=".vista.MenuRutas">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".vista.MenuRutas" />
+        </activity>
 
         <activity
             android:name=".vista.Galeria"
             android:label="Galeria"
-            android:parentActivityName=".vista.MenuRutas"
-            >
+            android:parentActivityName=".vista.MenuRutas">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".vista.MenuRutas" />
@@ -64,8 +68,11 @@
         <activity
             android:name=".vista.Chat"
             android:label="Chat"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:parentActivityName=".vista.MenuRutas">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".vista.MenuRutas" />
+        </activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -82,8 +89,14 @@
         <activity
             android:name=".vista.Mapa"
             android:label="@string/title_activity_mapa" />
+
         <activity android:name=".vista.GaleriaAministrador"
-            android:label="Administrador"></activity>
+            android:label="Administrador"
+            android:parentActivityName=".vista.MenuRutas" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".vista.MenuRutas" />
+        </activity>
     </application>
 
 </manifest>
