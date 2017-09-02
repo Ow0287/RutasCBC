@@ -1,27 +1,25 @@
 package com.misena.oscar.rutascbc.vista;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.activeandroid.query.Delete;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.misena.oscar.rutascbc.R;
@@ -49,51 +47,22 @@ public class Galeria extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galeria);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference refere = database.getReference("rutas");
+        DatabaseReference refere = database.getReference("");
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
         listaGale=(ListView)findViewById(R.id.lista_galeria);
         controladorGaleria =new ControladorGaleria();
-galeria=new ModelGaleria();
+        galeria=new ModelGaleria();
         arrayListGaleria=new ArrayList<>();
 
-        refere.addChildEventListener(new ChildEventListener() {
+        refere = refere.child("rutas");
+        refere.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("new ", "snapshot");
+                Log.e("snapshot:" , dataSnapshot.getKey());
 
-                String ruta=(String)dataSnapshot.child("ruta").getValue();
-                final String nombre=(String)dataSnapshot.child("nombre").getValue();
-                final String ficha=(String)dataSnapshot.child("ficha").getValue();
-                StorageReference imagesRef = storageRef.child(ruta);
-                long multi=1024*1024;
-                imagesRef.getBytes(multi).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-
-                        String fotoGale = Base64.encodeToString(bytes, Base64.DEFAULT);
-                        galeria.setFoto(fotoGale);
-                        galeria.setNombre(nombre);
-                        galeria.setFicha(ficha);
-                        galeria.save();
-                        mostrarGaleria();
-                    }
-                });
-
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+                aux(dataSnapshot);
             }
 
             @Override
@@ -101,16 +70,39 @@ galeria=new ModelGaleria();
 
             }
         });
-
-
     }
 
+    private void aux(DataSnapshot data) {
+
+        new Delete().from(ModelGaleria.class).execute();
+
+        for (DataSnapshot dataSnapshot : data.getChildren()){
+            Log.e("for","ruta");
+            String ruta = (String) dataSnapshot.child("ruta").getValue();
+            final String nombre = (String) dataSnapshot.child("nombre").getValue();
+            final String ficha = (String) dataSnapshot.child("ficha").getValue();
+            StorageReference imagesRef = storageRef.child(ruta);
+            long multi = 1024 * 1024;
+            imagesRef.getBytes(multi).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+
+                    String fotoGale = Base64.encodeToString(bytes, Base64.DEFAULT);
+                    galeria.setFoto(fotoGale);
+                    galeria.setNombre(nombre);
+                    galeria.setFicha(ficha);
+                    galeria.save();
+
+                }
+            });
+        }
+        mostrarGaleria();
+
+    }
     private void mostrarGaleria() {
-       arrayListGaleria=controladorGaleria.consultarGaleria();
-       adapterGaleria=new AdapterGaleria(arrayListGaleria, this);
+        arrayListGaleria=controladorGaleria.consultarGaleria();
+        adapterGaleria=new AdapterGaleria(arrayListGaleria, this);
         listaGale.setAdapter(adapterGaleria);
-
-
 
     }
 
