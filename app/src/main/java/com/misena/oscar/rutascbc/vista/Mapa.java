@@ -17,6 +17,8 @@ import com.misena.oscar.rutascbc.modelo.Ruta;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.media.CamcorderProfile.get;
+
 public class Mapa extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -51,9 +53,12 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback {
         List<Paradas> parada=rutas.getParadas();
         for (int f=0;f<parada.size();f++){
            mMap.addMarker(new MarkerOptions().position(new LatLng(parada.get(f).getUbicacionLat(),parada.get(f).getUbicacionLon())).title(parada.get(f).getNombreParada()));
-        }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(parada.get(0).getUbicacionLat(),parada.get(0).getUbicacionLon())));
+        }
+        LatLng coordenadas=new LatLng(parada.get(0).getUbicacionLat(),parada.get(0).getUbicacionLon());
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(coordenadas,16f));
+     //   mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(parada.get(0).getUbicacionLat(),parada.get(0).getUbicacionLon())));
 
     }
 }
