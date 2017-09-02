@@ -29,7 +29,7 @@ public class Rutas extends AppCompatActivity {
         final ListView lista=(ListView)findViewById(R.id.lis_rutas);
         ControladorRutas controladorRutas =new ControladorRutas();
 
-       rutas= controladorRutas.consultarTodasRutas();
+        rutas= controladorRutas.consultarTodasRutas();
         AdapterRutas adapter =new AdapterRutas(rutas,this);
         lista.setAdapter(adapter);
         final List<Ruta> finalRutas = rutas;
