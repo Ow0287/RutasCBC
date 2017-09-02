@@ -52,11 +52,13 @@
         <activity
             android:name=".vista.Galeria"
             android:label="Galeria"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".vista.MenuRutas"/>
         <activity
             android:name=".vista.Chat"
             android:label="Chat"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".vista.MenuRutas"/>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

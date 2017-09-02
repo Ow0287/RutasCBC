@@ -1,10 +1,12 @@
 package com.misena.oscar.rutascbc.vista;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -84,6 +86,8 @@ public class GaleriaAministrador extends AppCompatActivity {
 
     }
     public void registrarTitulacion(View view){
+
+
         final String nombreF=nombre.getText().toString();
         final String numFicha=ficha.getText().toString();
 

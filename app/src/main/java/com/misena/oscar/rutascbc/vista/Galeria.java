@@ -1,15 +1,19 @@
 package com.misena.oscar.rutascbc.vista;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -110,11 +114,38 @@ galeria=new ModelGaleria();
 
     }
 
-    public  void irfotos(View v){
+    public  void validarAdmin(View v){
+
+        final AlertDialog.Builder dialogo=new AlertDialog.Builder(Galeria.this);
+        dialogo.setMessage("Acceso para Administrador");
+        dialogo.setTitle("Administrador");
+        dialogo.setNeutralButton("Entrar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent =new Intent(Galeria.this,GaleriaAministrador.class);
+                startActivity(intent);
+                finish();
+            }
+
+        });
+        final  EditText admin=new EditText((Galeria.this));
+        final  EditText password=new EditText((Galeria.this));
+        LinearLayout linearL =new LinearLayout(Galeria.this);
+        linearL.setOrientation(LinearLayout.VERTICAL);
+
+        admin.setHint("Administrador");
+        password.setHint("Contraseña");
+        password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        linearL.addView(admin);
+        linearL.addView(password);
+        dialogo.setView(linearL);
+        dialogo.create();
+        dialogo.show();
+        /*
         Intent i =new Intent(Galeria.this,GaleriaAministrador.class);
         startActivity(i);
         finish();
-
+*/
     }
 
 
