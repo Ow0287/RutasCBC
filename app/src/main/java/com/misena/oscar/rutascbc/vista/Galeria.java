@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -79,50 +81,55 @@ public class Galeria extends AppCompatActivity {
 
     private void aux(DataSnapshot data) {
 
-        //new Delete().from(ModelGaleria.class).execute();
+        try {
+            for (DataSnapshot dataSnapshot : data.getChildren()) {
+                Log.e("for", "ruta");
+                String ruta = (String) dataSnapshot.child("ruta").getValue();
+                final String nombre = (String) dataSnapshot.child("nombre").getValue();
+                final String ficha = (String) dataSnapshot.child("ficha").getValue();
+                Log.e("nombre", nombre);
+                if (!controladorGaleria.consultarModelGaleria(nombre)) {
 
-        for (DataSnapshot dataSnapshot : data.getChildren()) {
-            Log.e("for", "ruta");
-            String ruta = (String) dataSnapshot.child("ruta").getValue();
-            final String nombre = (String) dataSnapshot.child("nombre").getValue();
-            final String ficha = (String) dataSnapshot.child("ficha").getValue();
+                    StorageReference imagesRef = storageRef.child(ruta);
+                    long multi = 1024 * 1024;
+                    imagesRef.getBytes(multi).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                        @Override
+                        public void onSuccess(byte[] bytes) {
 
-            if (controladorGaleria.consultarModelGaleria(nombre)) {
+                            String fotoGale = Base64.encodeToString(bytes, Base64.DEFAULT);
+                            galeria.setFoto(fotoGale);
+                            galeria.setNombre(nombre);
+                            galeria.setFicha(ficha);
+                            galeria.save();
+                            Log.e("descargar","fotos success");
+                        }
+                    });
 
-/*
-                StorageReference imagesRef = storageRef.child(ruta);
-                long multi = 1024 * 1024;
-                imagesRef.getBytes(multi).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-
-                        String fotoGale = Base64.encodeToString(bytes, Base64.DEFAULT);
-                        galeria.setFoto(fotoGale);
-                        galeria.setNombre(nombre);
-                        galeria.setFicha(ficha);
-                        galeria.save();
-                        Log.e("descargar","fotos success");
-                    }
-                });
-  */
+                }
             }
+        }catch (Exception e){
 
-      //      arrayListGaleria = controladorGaleria.consultarGaleria();
-      //      if (arrayListGaleria.size() > 0){
-      //          mostrarGaleria();
-      //      }
-
+        }finally {
+            arrayListGaleria = controladorGaleria.consultarGaleria();
+            if (arrayListGaleria.size() > 0){
+                mostrarGaleria();
+            }else{
+                Log.e("lista menor","a cero");
             }
+        }
+
+
+
+
         }
 
     private void sincronizar(){
 
-        //    refere = refere.child("rutas");
+        refere = refere.child("rutas");
         refere.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.e("new ", "snapshot");
-                Log.e("snapshot:" , dataSnapshot.getKey());
 
                 aux(dataSnapshot);
             }

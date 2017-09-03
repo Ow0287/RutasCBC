@@ -21,7 +21,7 @@ public class ControladorGaleria  {
 
     public List<ModelGaleria> consultarGaleria(){
 
-        return new Select().all().from(ModelGaleria.class).where("sincronizado = ?", true).execute();
+        return new Select().all().from(ModelGaleria.class).execute();
     }
 
     public boolean consultarModelGaleria(String nombre){
