@@ -31,6 +31,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.adapter.AdapterGaleria;
+import com.misena.oscar.rutascbc.controlador.ControladorAdministrador;
 import com.misena.oscar.rutascbc.controlador.ControladorGaleria;
 import com.misena.oscar.rutascbc.modelo.ModelGaleria;
 
@@ -42,6 +43,7 @@ public class Galeria extends AppCompatActivity {
     List<ModelGaleria> arrayListGaleria;
     AdapterGaleria adapterGaleria;
     ControladorGaleria controladorGaleria;
+    ControladorAdministrador controladorAdministrador;
     ListView listaGale;
     FirebaseStorage storage ;
     StorageReference storageRef ;
@@ -57,6 +59,7 @@ public class Galeria extends AppCompatActivity {
         storageRef = storage.getReference();
         listaGale=(ListView)findViewById(R.id.lista_galeria);
         controladorGaleria =new ControladorGaleria();
+        controladorAdministrador =new ControladorAdministrador();
         galeria=new ModelGaleria();
         arrayListGaleria=new ArrayList<>();
         arrayListGaleria = controladorGaleria.consultarGaleria();
@@ -195,7 +198,7 @@ public class Galeria extends AppCompatActivity {
 
                 if (admin.getText().toString().isEmpty() && password.getText().toString().isEmpty()){
                     Toast.makeText(Galeria.this, "Los Campos Estan Vacios", Toast.LENGTH_SHORT).show();
-                }else if(admin.getText().toString() =="Administrador" && password.getText().toString()=="Contraseña"){
+                }else if(controladorAdministrador.validarAdm(admin.getText().toString(),password.getText().toString())){
                     Intent in =new Intent(Galeria.this,GaleriaAministrador.class);
                     startActivity(in);
                     finish();

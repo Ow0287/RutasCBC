@@ -14,7 +14,11 @@ public class ModelAdmin extends Model {
     @Column(name = "password")
     public String password;
 
+    public ModelAdmin() {
+    }
+
     public String getNombre() {
+
         return nombre;
     }
 

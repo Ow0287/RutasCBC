@@ -9,15 +9,18 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.misena.oscar.rutascbc.R;
+import com.misena.oscar.rutascbc.controlador.ControladorAdministrador;
 import com.misena.oscar.rutascbc.controlador.ControladorParada;
 import com.misena.oscar.rutascbc.controlador.ControladorRutas;
+import com.misena.oscar.rutascbc.modelo.ModelAdmin;
 import com.misena.oscar.rutascbc.modelo.Paradas;
 import com.misena.oscar.rutascbc.modelo.Ruta;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+ModelAdmin administrador;
+    ControladorAdministrador controladorAdministrador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
        ControladorRutas controladorRutas = new ControladorRutas();
         ControladorParada controladorParada=new ControladorParada();
         SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
+
+        controladorAdministrador =new ControladorAdministrador();
+        if (controladorAdministrador.admin()){
+            administrador=new ModelAdmin("BienestarAlAprendiz","CentroBiotecnologicoCBC.1129600");
+        }
         boolean login=shared.getBoolean("login",false);
 
        if (controladorRutas.consultarTodasRutas().size() == 0) {

@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -119,5 +120,18 @@ public class GaleriaAministrador extends AppCompatActivity {
 
 
     }
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home){
+
+            startActivity(new Intent(GaleriaAministrador.this, Galeria.class));
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+
+
+    }
+
 }
 
