@@ -14,6 +14,9 @@ public class ModelGaleria extends Model{
     @Column(name = "ficha")
     public String ficha;
 
+    @Column(name = "sincronizado")
+    public boolean sincronizado;
+
     public ModelGaleria() {
     }
 

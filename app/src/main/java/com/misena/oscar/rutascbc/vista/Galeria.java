@@ -7,20 +7,18 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.activeandroid.query.Delete;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,13 +30,9 @@ import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.adapter.AdapterGaleria;
 import com.misena.oscar.rutascbc.controlador.ControladorGaleria;
 import com.misena.oscar.rutascbc.modelo.ModelGaleria;
-import com.misena.oscar.rutascbc.modelo.Ruta;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.id.list;
 
 public class Galeria extends AppCompatActivity {
     ModelGaleria galeria;
@@ -48,19 +42,24 @@ public class Galeria extends AppCompatActivity {
     ListView listaGale;
     FirebaseStorage storage ;
     StorageReference storageRef ;
+    DatabaseReference refere;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galeria);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference refere = database.getReference("");
+        refere = database.getReference("");
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
         listaGale=(ListView)findViewById(R.id.lista_galeria);
         controladorGaleria =new ControladorGaleria();
         galeria=new ModelGaleria();
         arrayListGaleria=new ArrayList<>();
+        arrayListGaleria = controladorGaleria.consultarGaleria();
+
+        mostrarGaleria();
+
         mAuth = FirebaseAuth.getInstance();
         mAuth.signInWithEmailAndPassword("ing.odvega@gmail.com", "12345678").addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -68,6 +67,12 @@ public class Galeria extends AppCompatActivity {
                 Log.e("inicio ","completo");
             }
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         refere = refere.child("rutas");
         refere.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -83,45 +88,70 @@ public class Galeria extends AppCompatActivity {
 
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
 
 
     }
 
     private void aux(DataSnapshot data) {
 
-        new Delete().from(ModelGaleria.class).execute();
+        //new Delete().from(ModelGaleria.class).execute();
 
-        for (DataSnapshot dataSnapshot : data.getChildren()){
-            Log.e("for","ruta");
+        for (DataSnapshot dataSnapshot : data.getChildren()) {
+            Log.e("for", "ruta");
             String ruta = (String) dataSnapshot.child("ruta").getValue();
             final String nombre = (String) dataSnapshot.child("nombre").getValue();
             final String ficha = (String) dataSnapshot.child("ficha").getValue();
-            StorageReference imagesRef = storageRef.child(ruta);
-            long multi = 1024 * 1024;
-            imagesRef.getBytes(multi).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
 
-                    String fotoGale = Base64.encodeToString(bytes, Base64.DEFAULT);
-                    galeria.setFoto(fotoGale);
-                    galeria.setNombre(nombre);
-                    galeria.setFicha(ficha);
-                    galeria.save();
-Log.e("descargar","fotos success");
-                }
-            });
+            if (controladorGaleria.consultarModelGaleria(nombre)) {
+
+/*
+                StorageReference imagesRef = storageRef.child(ruta);
+                long multi = 1024 * 1024;
+                imagesRef.getBytes(multi).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+
+                        String fotoGale = Base64.encodeToString(bytes, Base64.DEFAULT);
+                        galeria.setFoto(fotoGale);
+                        galeria.setNombre(nombre);
+                        galeria.setFicha(ficha);
+                        galeria.save();
+                        Log.e("descargar","fotos success");
+                    }
+                });
+  */
+            }
+
+            arrayListGaleria = controladorGaleria.consultarGaleria();
+            if (arrayListGaleria.size() > 0){
+                mostrarGaleria();
+            }
+
+            }
         }
-        mostrarGaleria();
+
+    private void sincronizar(){
+
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.sincronizar){
+
+            sincronizar();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void mostrarGaleria() {
-        arrayListGaleria = controladorGaleria.consultarGaleria();
+
         Log.e("tamaño","galeria es " + String.valueOf(arrayListGaleria.size()));
         adapterGaleria=new AdapterGaleria(arrayListGaleria, this);
         listaGale.setAdapter(adapterGaleria);
@@ -161,6 +191,5 @@ Log.e("descargar","fotos success");
         finish();
 */
     }
-
 
 }
