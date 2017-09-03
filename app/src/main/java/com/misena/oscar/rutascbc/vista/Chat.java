@@ -14,7 +14,7 @@ public class Chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
     }
-/*
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -29,5 +29,5 @@ public class Chat extends AppCompatActivity {
 
     }
 
-    */
+
 }

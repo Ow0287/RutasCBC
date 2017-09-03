@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -163,15 +164,7 @@ public class Galeria extends AppCompatActivity {
         final AlertDialog.Builder dialogo=new AlertDialog.Builder(Galeria.this);
         dialogo.setMessage("Acceso para Administrador");
         dialogo.setTitle("Administrador");
-        dialogo.setNeutralButton("Entrar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent =new Intent(Galeria.this,GaleriaAministrador.class);
-                startActivity(intent);
-                finish();
-            }
 
-        });
         final  EditText admin=new EditText((Galeria.this));
         final  EditText password=new EditText((Galeria.this));
         LinearLayout linearL =new LinearLayout(Galeria.this);
@@ -183,12 +176,28 @@ public class Galeria extends AppCompatActivity {
         linearL.addView(admin);
         linearL.addView(password);
         dialogo.setView(linearL);
+
+        dialogo.setNeutralButton("Entrar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                if (admin.getText().toString().isEmpty() && password.getText().toString().isEmpty()){
+                    Toast.makeText(Galeria.this, "Los Campos Estan Vacios", Toast.LENGTH_SHORT).show();
+                }else if(admin.getText().toString() =="Administrador" && password.getText().toString()=="Contraseña"){
+                    Intent in =new Intent(Galeria.this,GaleriaAministrador.class);
+                    startActivity(in);
+                    finish();
+                }
+
+            }
+
+        });
+
         dialogo.create();
         dialogo.show();
+
         /*
-        Intent i =new Intent(Galeria.this,GaleriaAministrador.class);
-        startActivity(i);
-        finish();
+
 */
     }
 
