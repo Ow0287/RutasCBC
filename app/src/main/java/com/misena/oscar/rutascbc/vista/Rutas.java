@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -41,6 +42,16 @@ public class Rutas extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home){
+
+            startActivity(new Intent(Rutas.this, MenuRutas.class));
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
     public  void irRuta(Ruta ruta){
         Intent intent=new Intent (Rutas.this,Mapa.class);

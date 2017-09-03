@@ -155,6 +155,11 @@ public class Galeria extends AppCompatActivity {
 
             sincronizar();
         }
+        if (item.getItemId() == android.R.id.home){
+
+            startActivity(new Intent(Galeria.this, MenuRutas.class));
+            finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -207,5 +212,6 @@ public class Galeria extends AppCompatActivity {
 
 */
     }
+
 
 }
