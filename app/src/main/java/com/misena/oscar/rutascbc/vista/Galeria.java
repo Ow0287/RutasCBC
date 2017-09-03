@@ -187,7 +187,7 @@ public class Galeria extends AppCompatActivity {
 
         admin.setHint("Administrador");
         password.setHint("Contraseña");
-        password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        password.setInputType(InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
         linearL.addView(admin);
         linearL.addView(password);
         dialogo.setView(linearL);
