@@ -32,6 +32,7 @@ public class ControladorGaleria  {
 
         if (model == null){
             Log.e("modelo nulo","no existe");
+            modelo = false;
         }else {
             Log.e("ficha modelo ", model.getFicha());
         }
@@ -42,4 +43,6 @@ public class ControladorGaleria  {
         }*/
         return modelo;
     }
+
+
 }

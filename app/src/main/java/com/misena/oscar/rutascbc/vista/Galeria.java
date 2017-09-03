@@ -74,22 +74,6 @@ public class Galeria extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        refere = refere.child("rutas");
-        refere.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.e("new ", "snapshot");
-                Log.e("snapshot:" , dataSnapshot.getKey());
-
-                aux(dataSnapshot);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
 
     }
 
@@ -123,22 +107,38 @@ public class Galeria extends AppCompatActivity {
   */
             }
 
-            arrayListGaleria = controladorGaleria.consultarGaleria();
-            if (arrayListGaleria.size() > 0){
-                mostrarGaleria();
-            }
+      //      arrayListGaleria = controladorGaleria.consultarGaleria();
+      //      if (arrayListGaleria.size() > 0){
+      //          mostrarGaleria();
+      //      }
 
             }
         }
 
     private void sincronizar(){
 
+        //    refere = refere.child("rutas");
+        refere.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("new ", "snapshot");
+                Log.e("snapshot:" , dataSnapshot.getKey());
+
+                aux(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_galeria, menu);
+        return true;
     }
 
     @Override
