@@ -9,7 +9,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.misena.oscar.rutascbc.R;
+
+import java.util.List;
 
 public class Chat extends AppCompatActivity {
 
@@ -22,7 +25,9 @@ public class Chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
+        listaChat = (ListView)findViewById(R.id.lista);
+        FirebaseDatabase dataBaseFirebase = FirebaseDatabase.getInstance("Chat");
+        btnEnviar = (FloatingActionButton)findViewById(R.id.enviar);
         cargarMensajes();
     }
 

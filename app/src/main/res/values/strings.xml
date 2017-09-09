@@ -21,5 +21,5 @@
     <string name="btn_registrar_titulacion">Registrar Titulacion</string>
     <string name="ficha">Ficha</string>
     <string name="sincronizar">Sincronizar</string>
-    <string name="edt_chat">Escriba Su Mensaje</string>
+    <string name="edt_chat">Escribe tu mensaje</string>
 </resources>

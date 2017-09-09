@@ -12,18 +12,21 @@
     android:src="@drawable/ic_enviar"
     android:id="@+id/enviar"
     android:tint="@android:color/white"
+    android:layout_toRightOf="@+id/txtInEnviar"
+    android:layout_toEndOf="@+id/txtInEnviar"
     android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
     app:fabSize="mini"/>
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+        android:id="@+id/txtInEnviar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/enviar"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+
+        >
         <EditText
             android:id="@+id/edt_chat"
-            android:layout_width="match_parent"
+            android:layout_width="280dp"
             android:layout_height="40dp"
             android:hint="@string/edt_chat"
             android:textStyle="bold"
@@ -32,7 +35,7 @@
     <ListView
         android:id="@+id/lista"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/enviar"
+        android:layout_above="@+id/txtInEnviar"
         android:dividerHeight="16dp"
         android:divider="@android:color/transparent"
         android:layout_width="match_parent"
