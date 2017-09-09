@@ -5,5 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.misena.oscar.rutascbc.vista.Chat">
-
+<android.support.design.widget.floatingactionButton
+    android:layout_width="match_parent"
+    android:layout_height="wrap_contect"
+    android:clickable="true"
+    android:src="@drawable/ic_enviar"
+    android:id="@+id/enviar"
+    android:tint="@android:color/white"
+    android:layout_alignparentbutton="true"
+    android:layout_alignparentleft="true"
+    app:fabsize="mini"/>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/enviar"
+        android:layout_alignParentBottom="true">
+    </android.support.design.widget.TextInputLayout>
+    <ListView
+        android:id="@+id/lista"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/enviar"
+        android:dividerheight="16dp"
+        android:divider="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"></ListView>
 </RelativeLayout>
