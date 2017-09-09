@@ -7,6 +7,6 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="txv_tarjeta">15sp</dimen>
-    <dimen name="letra_txv">20sp</dimen>
+    <dimen name="letra_txv">16sp</dimen>
     <dimen name="img_tamaño">20dp</dimen>
 </resources>
