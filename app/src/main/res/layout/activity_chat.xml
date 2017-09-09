@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.misena.oscar.rutascbc.vista.Chat">
-<android.support.design.widget.floatingactionButton
+<android.support.design.widget.FloatingActionButton
     android:layout_width="match_parent"
-    android:layout_height="wrap_contect"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:src="@drawable/ic_enviar"
     android:id="@+id/enviar"
     android:tint="@android:color/white"
-    android:layout_alignparentbutton="true"
-    android:layout_alignparentleft="true"
-    app:fabsize="mini"/>
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    app:fabSize="mini"/>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,9 +26,9 @@
         android:id="@+id/lista"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/enviar"
-        android:dividerheight="16dp"
+        android:dividerHeight="16dp"
         android:divider="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"></ListView>
+        android:layout_marginBottom="16dp"/>
 </RelativeLayout>
