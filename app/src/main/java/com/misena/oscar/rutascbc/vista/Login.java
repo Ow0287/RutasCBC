@@ -15,8 +15,8 @@ import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.modelo.Usuario;
 
 public class Login extends AppCompatActivity {
-    EditText nombreE,contrasenaE;
 
+    EditText nombreE,contrasenaE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +26,9 @@ public class Login extends AppCompatActivity {
         //setSupportActionBar(toolbar);
         nombreE=(EditText)findViewById(R.id.edt_usuario);
         contrasenaE=(EditText)findViewById(R.id.edt_contrasena_login);
-
-
     }
     public  void  login(View v){
         String nombre,contrasena;
-        //
-
 
         Usuario user = new Select().from(Usuario.class).where("nombre = ?", nombreE.getText().toString()).and("contrasena = ?", contrasenaE.getText().toString())
                 .orderBy("RANDOM()").executeSingle();
@@ -44,7 +40,8 @@ public class Login extends AppCompatActivity {
         {
             SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor =shared.edit();
-           editor.putBoolean("login",true);
+            editor.putString("nombre", user.getNombre());
+            editor.putBoolean("login",true);
             editor.apply();
             Intent i =new Intent(Login.this, MenuRutas.class);
             startActivity(i);

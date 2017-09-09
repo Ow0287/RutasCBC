@@ -17,13 +17,9 @@ import com.misena.oscar.rutascbc.modelo.ModelGaleria;
 
 import java.util.List;
 
-/**
- * Created by user on 19/08/2017.
- */
-
 public class AdapterGaleria extends BaseAdapter {
-    List<ModelGaleria> galerias;
-    Context context;
+    private List<ModelGaleria> galerias;
+    private Context context;
 
     public AdapterGaleria(List<ModelGaleria> galerias, Context context) {
         this.galerias = galerias;

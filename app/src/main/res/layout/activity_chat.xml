@@ -15,14 +15,14 @@
     android:layout_toRightOf="@+id/txtInEnviar"
     android:layout_toEndOf="@+id/txtInEnviar"
     android:layout_alignParentBottom="true"
-    app:fabSize="mini"/>
+    app:fabSize="mini"
+    android:onClick="enviarMensajes"/>
     <android.support.design.widget.TextInputLayout
         android:id="@+id/txtInEnviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-
         >
         <EditText
             android:id="@+id/edt_chat"
