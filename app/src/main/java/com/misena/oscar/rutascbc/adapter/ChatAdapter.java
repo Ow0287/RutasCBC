@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.misena.oscar.rutascbc.MensajeChat;
+import com.misena.oscar.rutascbc.modelo.MensajeChat;
 import com.misena.oscar.rutascbc.R;
 
 import java.util.List;

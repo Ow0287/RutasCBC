@@ -1,4 +1,4 @@
-package com.misena.oscar.rutascbc;
+package com.misena.oscar.rutascbc.modelo;
 
 public class MensajeChat {
 

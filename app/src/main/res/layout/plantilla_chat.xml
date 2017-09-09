@@ -7,7 +7,7 @@
         android:id="@+id/tarjeta_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_meenu"
+        android:background="@color/cardview_dark_background"
         android:layout_marginTop="10dp">
 
         <ImageView

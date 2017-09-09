@@ -15,11 +15,9 @@ import android.widget.ListView;
 import com.activeandroid.query.Select;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.misena.oscar.rutascbc.MensajeChat;
+import com.misena.oscar.rutascbc.modelo.MensajeChat;
 import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.modelo.Usuario;
-
-import java.util.List;
 
 public class Chat extends AppCompatActivity {
 
