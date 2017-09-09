@@ -21,6 +21,13 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/enviar"
         android:layout_alignParentBottom="true">
+        <EditText
+            android:id="@+id/edt_chat"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="@string/edt_chat"
+            android:textStyle="bold"
+            android:layout_marginLeft="40dp"/>
     </android.support.design.widget.TextInputLayout>
     <ListView
         android:id="@+id/lista"
