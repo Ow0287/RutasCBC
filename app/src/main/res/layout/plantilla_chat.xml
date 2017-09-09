@@ -7,27 +7,31 @@
         android:id="@+id/tarjeta_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_botones"
+        android:background="@color/color_meenu"
         android:layout_marginTop="10dp">
 
         <ImageView
             android:id="@+id/img_chat"
             android:layout_width="130dp"
             android:layout_height="100dp"
-            app:srcCompat="@mipmap/logosena"/>
+            app:srcCompat="@mipmap/logosena"
+            android:background="@drawable/selector_botones"/>
         <TextView
             android:id="@+id/txv_nombre_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="180dp"
             android:layout_marginTop="20dp"
-            android:textSize="@dimen/txv_tarjeta"/>
+            android:textSize="@dimen/letra_txv"
+            android:text="@string/letra_txv"/>
         <TextView
             android:id="@+id/txv_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="200dp"
-            android:layout_marginTop="60dp"
-            android:textSize="@dimen/txv_tarjeta"/>
+            android:layout_marginTop="70dp"
+            android:textSize="@dimen/txv_tarjeta"
+
+            android:text="@string/letra_tx"/>
     </android.support.v7.widget.CardView>
 </RelativeLayout>
