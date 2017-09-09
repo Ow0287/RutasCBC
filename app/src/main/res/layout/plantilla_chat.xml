@@ -12,10 +12,11 @@
 
         <ImageView
             android:id="@+id/img_chat"
-            android:layout_width="130dp"
-            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
             app:srcCompat="@mipmap/logosena"
-            android:background="@drawable/selector_botones"/>
+            android:background="@drawable/selector_botones"
+            />
         <TextView
             android:id="@+id/txv_nombre_chat"
             android:layout_width="wrap_content"
