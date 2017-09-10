@@ -13,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.misena.oscar.rutascbc.R;
 
@@ -120,6 +121,8 @@ public class MenuRutas extends AppCompatActivity
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
 
+        }else {
+            Toast.makeText(this, "Usted no tiene accesso a esta opcion.", Toast.LENGTH_SHORT).show();
         }
         return true;
     }

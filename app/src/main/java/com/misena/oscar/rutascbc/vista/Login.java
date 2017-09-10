@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -28,54 +29,52 @@ public class Login extends AppCompatActivity {
     EditText nombreE,contrasenaE;
     SharedPreferences shared;
     SharedPreferences.Editor editor;
-    boolean b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
         nombreE=(EditText)findViewById(R.id.edt_usuario);
         contrasenaE=(EditText)findViewById(R.id.edt_contrasena_login);
         shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
 
 
     }
+
     public  void  login(View v){
+
+        RadioButton radioAprendiz  = (RadioButton)findViewById(R.id.radioAprendiz);
+        RadioButton radioConductor = (RadioButton)findViewById(R.id.radioConductor);
 
         String usuarioDigitado = nombreE.getText().toString();
         String claveDigitada = contrasenaE.getText().toString();
 
-        if(checkConductor(usuarioDigitado, claveDigitada)){
+        if (usuarioDigitado.equals("") || claveDigitada.equals("")){
 
+            Toast.makeText(this, "Por favor llenar campos faltantes", Toast.LENGTH_SHORT).show();
         }else {
+            if (radioAprendiz.isChecked()) {
 
-        Usuario user = new Select().from(Usuario.class).where("nombre = ?", nombreE.getText().toString()).and("contrasena = ?", contrasenaE.getText().toString())
-                .orderBy("RANDOM()").executeSingle();
+                Usuario user = new Select().from(Usuario.class).where("nombre = ?", nombreE.getText().toString()).and("contrasena = ?", contrasenaE.getText().toString())
+                        .orderBy("RANDOM()").executeSingle();
 
-       // nombre=shared.getString("nombre","");
-       // contrasena=shared.getString("contrasena","");
+                if (user != null) {
+                    editor = shared.edit();
+                    editor.putString("nombre", user.getNombre());
+                    editor.putBoolean("login", true);
+                    editor.apply();
+                } else {
 
-        if(user != null)
-        {
-            editor = shared.edit();
-            editor.putString("nombre", user.getNombre());
-            editor.putBoolean("login",true);
-            editor.apply();
-            Intent i =new Intent(Login.this, MenuRutas.class);
-            startActivity(i);
-            finish();
+                    Toast.makeText(this, "EL USUARIO NO EXISTE", Toast.LENGTH_SHORT).show();
+                }
+            } else if (radioConductor.isChecked()) {
 
-        }else {
-
-            Toast.makeText(this, "EL USUARIO NO EXISTE", Toast.LENGTH_SHORT).show();
+                checkConductor(usuarioDigitado, claveDigitada);
+            }
         }
+}
 
-        }
-    }
-
-    private boolean checkConductor(final String usuarioDigitado, final String claveDigitada) {
+    private void checkConductor(final String usuarioDigitado, final String claveDigitada) {
 
         FirebaseDatabase dataBase = FirebaseDatabase.getInstance();
         DatabaseReference refLOgin = dataBase.getReference("Conductor");
@@ -93,7 +92,10 @@ public class Login extends AppCompatActivity {
                         if (claveDescargada.equals(claveDigitada)){
 
                             Log.e("Login", "exitoso");
-
+                            editor = shared.edit();
+                            editor.putBoolean("inicioSesionUsuario", true);
+                            editor.apply();
+                            irMenu();
 
                         }else{
 
@@ -102,7 +104,6 @@ public class Login extends AppCompatActivity {
                         }
                     }else{
                         mostrarMensajeConductor();
-
                     }
                 }else{
                     mostrarMensajeConductor();
@@ -115,7 +116,12 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        return true;
+    }
+
+    private void irMenu() {
+        Intent i =new Intent(Login.this, MenuRutas.class);
+        startActivity(i);
+        finish();
     }
 
     private void mostrarMensajeConductor() {
