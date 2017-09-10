@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.misena.oscar.rutascbc.Integrantes">
+<TextView
+    android:id="@+id/integrante_osccar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/integrant_oscar"
+    android:layout_marginTop="80dp"
+    android:layout_centerHorizontal="true"
+    android:textColor="@color/color_meenu"/>
+    <TextView
+        android:id="@+id/integrante_deivis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/integrant_deivis"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:textColor="@color/color_meenu"/>
+    <TextView
+        android:id="@+id/integrante_eimis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/integrant_eimys"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="210dp"
+        android:textColor="@color/color_meenu"/>
+    <TextView
+        android:id="@+id/integrante_loraines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/integrant_loraines"
+        android:layout_marginTop="170dp"
+        android:textColor="@color/color_meenu"/>
+</RelativeLayout>
