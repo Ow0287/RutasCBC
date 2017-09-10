@@ -13,13 +13,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.misena.oscar.rutascbc.R;
 
 public class MenuRutas extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private boolean usuarioChofer;
+    private SharedPreferences shared;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,8 @@ public class MenuRutas extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
+        usuarioChofer = shared.getBoolean("inicioSesionUsuario",false);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -92,37 +94,40 @@ public class MenuRutas extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        if (!usuarioChofer) {
 
-        if (id == R.id.nav_camera) {
-            Intent intent=new Intent (MenuRutas.this,Rutas.class);
-            startActivity(intent);
-            finish();
+            int id = item.getItemId();
 
-        } else if (id == R.id.nav_gallery) {
-            Intent intent=new Intent (MenuRutas.this,Galeria.class);
-            startActivity(intent);
-            finish();
+            if (id == R.id.nav_camera) {
+                Intent intent = new Intent(MenuRutas.this, Rutas.class);
+                startActivity(intent);
+                finish();
 
-        } else if (id == R.id.nav_slideshow) {
-            Intent intent=new Intent (MenuRutas.this,Chat.class);
-            startActivity(intent);
-            finish();
+            } else if (id == R.id.nav_gallery) {
+                Intent intent = new Intent(MenuRutas.this, Galeria.class);
+                startActivity(intent);
+                finish();
 
-        } else if (id == R.id.nav_manage) {
-          finish();
+            } else if (id == R.id.nav_slideshow) {
+                Intent intent = new Intent(MenuRutas.this, Chat.class);
+                startActivity(intent);
+                finish();
+
+            } else if (id == R.id.nav_manage) {
+                finish();
+            }
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
-
     }
+
     public  void dialogo(){
-        SharedPreferences shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
-        boolean login=shared.getBoolean("login",false);
         SharedPreferences.Editor editor =shared.edit();
         editor.putBoolean("login",false);
+        editor.putBoolean("inicioSesionUsuario",false);
         editor.apply();
 
         Intent intent=new Intent (MenuRutas.this,Login.class);
@@ -131,5 +136,4 @@ public class MenuRutas extends AppCompatActivity
 
 
     }
-
 }

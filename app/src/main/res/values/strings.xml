@@ -28,4 +28,6 @@
     <string name="integrant_deivis">DEIVIS RAFAEL EGUIS OSORIO</string>
     <string name="integrant_eimys">EIMYS PASSO OSPINO</string>
     <string name="integrant_loraines">LORAINES PAOLA ZAPATA</string>
+    <string name="aprendiz">Aprendiz</string>
+    <string name="conductor">Conductor</string>
 </resources>

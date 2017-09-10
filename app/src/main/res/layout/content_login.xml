@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.misena.oscar.rutascbc.vista.Login"
-    tools:showIn="@layout/activity_login">
+    tools:showIn="@layout/activity_login"
+    android:id="@+id/lay_login">
 <TextView
     android:id="@+id/txv_login"
     android:layout_width="wrap_content"
@@ -89,7 +90,28 @@
         android:background="@drawable/selector_botones"
         android:textColor="@color/cardview_light_background"/>
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/img_login_contra"
+        android:layout_alignStart="@+id/img_login_contra"
+        android:layout_below="@+id/btn_registrarse" >
 
+        <RadioButton
+            android:id="@+id/radioAprendiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/aprendiz"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioConductor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/conductor" />
+    </RadioGroup>
 
 
 </RelativeLayout>
