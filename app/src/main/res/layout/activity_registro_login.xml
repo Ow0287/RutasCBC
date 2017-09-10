@@ -77,7 +77,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="193dp"
-        app:srcCompat="@mipmap/key" />
+        app:srcCompat="@mipmap/iconokeys" />
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,13 +98,14 @@
 
             android:textStyle="bold"/>
     </android.support.design.widget.TextInputLayout>
+
     <ImageView
         android:id="@+id/img_repetir_contra"
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="255dp"
-        app:srcCompat="@mipmap/key" />
+        app:srcCompat="@mipmap/iconokeys" />
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
