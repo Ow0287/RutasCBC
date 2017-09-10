@@ -35,6 +35,7 @@ public class Chat extends AppCompatActivity {
     String correo;
     List<MensajeChat> listaMensajes;
     ChatAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +66,7 @@ public class Chat extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 Log.e("mensaje", (String) dataSnapshot.child("mensaje").getValue());
                 Log.e("usuario", (String) dataSnapshot.child("usuario").getValue());
-
+                listaChat.setSelection(adapter.getCount() -1);
             }
 
             @Override
@@ -88,7 +89,6 @@ public class Chat extends AppCompatActivity {
 
             }
         });
-
 
     }
 
