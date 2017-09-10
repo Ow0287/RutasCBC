@@ -52,7 +52,6 @@ public class Chat extends AppCompatActivity {
         listaMensajes = new ArrayList<>();
         adapter = new ChatAdapter(listaMensajes, Chat.this, correo);
         listaChat.setAdapter(adapter);
-        cargarMensajes();
 
         refChat.addChildEventListener(new ChildEventListener() {
             @Override
@@ -94,17 +93,13 @@ public class Chat extends AppCompatActivity {
     }
 
     public void enviarMensajes(View v){
+        //Captura del boton enviar
         if (!edtMensajeChat.getText().toString().equals("")){
 
             MensajeChat mensaje = new MensajeChat(edtMensajeChat.getText().toString(), correo);
             refChat.push().setValue(mensaje);
-
+            // Aqui se envia el mensaje
         }
-    }
-
-    private void cargarMensajes() {
-
-
     }
 
     @Override
