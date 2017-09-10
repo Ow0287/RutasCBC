@@ -34,29 +34,27 @@
         <activity
             android:name=".vista.RegistroLogin"
             android:label="Registro"
-            android:parentActivityName=".vista.Login"/>
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-               android:value=".vista.Login" />
+            android:parentActivityName=".vista.Login" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".vista.Login" />
+
         <activity
             android:name=".vista.Login"
-            android:label="@string/title_activity_login"
-
-             />
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".vista.MenuRutas"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".vista.Rutas"
             android:label="Rutas"
-        android:parentActivityName=".vista.MenuRutas">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".vista.MenuRutas" />
+            android:parentActivityName=".vista.MenuRutas">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".vista.MenuRutas" />
         </activity>
-
         <activity
             android:name=".vista.Galeria"
             android:label="Galeria"
@@ -64,15 +62,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".vista.MenuRutas" />
-
         </activity>
         <activity
             android:name=".vista.Chat"
             android:label="Chat"
             android:parentActivityName=".vista.MenuRutas">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".vista.MenuRutas" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".vista.MenuRutas" />
         </activity>
 
         <!--
@@ -90,19 +87,20 @@
         <activity
             android:name=".vista.Mapa"
             android:label="@string/title_activity_mapa"
-            android:parentActivityName=".vista.Rutas" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".vista.Rutas" />
+            android:parentActivityName=".vista.Rutas">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".vista.Rutas" />
         </activity>
-
-        <activity android:name=".vista.GaleriaAministrador"
+        <activity
+            android:name=".vista.GaleriaAministrador"
             android:label="Administrador"
-            android:parentActivityName=".vista.Galeria" >
+            android:parentActivityName=".vista.Galeria">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".vista.Galeria" />
         </activity>
+        <activity android:name=".Integrantes"></activity>
     </application>
 
 </manifest>
