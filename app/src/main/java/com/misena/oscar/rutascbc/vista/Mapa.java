@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +42,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class Mapa extends FragmentActivity implements OnMapReadyCallback
+public class Mapa extends AppCompatActivity implements OnMapReadyCallback
         , GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, PasarUbicacion {
 
@@ -80,7 +81,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
            return;
         }
-        mMap.setMyLocationEnabled(true);
+//        mMap.setMyLocationEnabled(true);
         String ruta=getIntent().getStringExtra("nombre");
         Ruta rutas=controladorRutas.consultarUnaRuta(ruta);
         parada=rutas.getParadas();

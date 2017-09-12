@@ -21,8 +21,9 @@ public class DirectionFinder {
     public PasarUbicacion pasar;
     public LatLng origen;
     public LatLng destino;
-    //private final String API_KEY = "AIzaSyDbCCm75pd-bS-UIuSxRADAmnyY62fyeNk";
-    private final String API_KEY = "AIzaSyCK9JS-olnr0GYa7IqxE3pQiHrAqYNdU_g";
+    //private final String API_KEY = "AIzaSyCl1cDkUtCTtlivZd4MBo1v68j5EDFAAOo";
+
+    private final String API_KEY = "AIzaSyBdvMKBvGKMFUTC0cdtx8u-lSjPCLsXQq4";
     private final String URL_HTTP = "https://maps.googleapis.com/maps/api/directions/json?origin=";
             ;
 //"https://maps.googleapis.com/maps/api/directions/json?origin=10.451655,-73.246534&destination=10.464147,-73.243916&key=AIzaSyDbCCm75pd-bS-UIuSxRADAmnyY62fyeNk"
