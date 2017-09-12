@@ -38,7 +38,6 @@ public class Login extends AppCompatActivity {
         contrasenaE=(EditText)findViewById(R.id.edt_contrasena_login);
         shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
 
-
     }
 
     public  void  login(View v){
@@ -63,6 +62,7 @@ public class Login extends AppCompatActivity {
                     editor.putString("nombre", user.getNombre());
                     editor.putBoolean("login", true);
                     editor.apply();
+                    irMenu();
                 } else {
 
                     Toast.makeText(this, "EL USUARIO NO EXISTE", Toast.LENGTH_SHORT).show();
@@ -94,6 +94,7 @@ public class Login extends AppCompatActivity {
                             Log.e("Login", "exitoso");
                             editor = shared.edit();
                             editor.putBoolean("inicioSesionUsuario", true);
+                            editor.putString("usuarioConductor", usuarioDescargado);
                             editor.apply();
                             irMenu();
 

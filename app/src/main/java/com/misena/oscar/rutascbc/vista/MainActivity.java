@@ -32,7 +32,8 @@ ModelAdmin administrador;
 
         controladorAdministrador =new ControladorAdministrador();
         if (controladorAdministrador.admin()){
-            administrador=new ModelAdmin("BienestarAlAprendiz","CentroBiotecnologicoCBC.1129600");
+            administrador=new ModelAdmin("AdminSena","123456");
+            administrador.save();
         }
         boolean login=shared.getBoolean("login",false);
 

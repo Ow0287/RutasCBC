@@ -198,23 +198,19 @@ public class Galeria extends AppCompatActivity {
 
                 if (admin.getText().toString().isEmpty() && password.getText().toString().isEmpty()){
                     Toast.makeText(Galeria.this, "Los Campos Estan Vacios", Toast.LENGTH_SHORT).show();
-                }else if(controladorAdministrador.validarAdm(admin.getText().toString(),password.getText().toString())){
+                }else if(controladorAdministrador.validarAdm(admin.getText().toString(),
+                        password.getText().toString())){
                     Intent in =new Intent(Galeria.this,GaleriaAministrador.class);
                     startActivity(in);
                     finish();
+                }else{
+                    Toast.makeText(Galeria.this, "Usted no es administrador.", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
         });
 
         dialogo.create();
         dialogo.show();
-
-        /*
-
-*/
     }
-
-
 }
