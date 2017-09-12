@@ -81,7 +81,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
            return;
         }
-//        mMap.setMyLocationEnabled(true);
+        mMap.setMyLocationEnabled(true);
         String ruta=getIntent().getStringExtra("nombre");
         Ruta rutas=controladorRutas.consultarUnaRuta(ruta);
         parada=rutas.getParadas();
