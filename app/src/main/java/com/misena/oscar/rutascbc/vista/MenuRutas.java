@@ -186,6 +186,8 @@ public class MenuRutas extends AppCompatActivity
 
     @Override
     protected void onDestroy() {
+
+        DatabaseReference.goOffline();
         client.disconnect();
         super.onDestroy();
     }

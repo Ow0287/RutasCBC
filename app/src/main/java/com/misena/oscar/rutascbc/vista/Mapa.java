@@ -1,21 +1,19 @@
 package com.misena.oscar.rutascbc.vista;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -29,6 +27,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.misena.oscar.rutascbc.R;
 import com.misena.oscar.rutascbc.controlador.ControladorRutas;
 import com.misena.oscar.rutascbc.modelo.Paradas;
@@ -49,8 +52,12 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     ControladorRutas controladorRutas;
     private GoogleApiClient client;
-    private Location mLastLocation, paradaLocation;
+    private Location mLastLocation;
     List<Paradas> parada;
+    SharedPreferences shared;
+    DatabaseReference refRutaConductor, refConductor;
+    String ruta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +74,22 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
                     .addOnConnectionFailedListener(this)
                     .build();
         }
+        shared =getSharedPreferences("preferencia", Context.MODE_PRIVATE);
+        ruta=getIntent().getStringExtra("nombre");
+
+        refRutaConductor = FirebaseDatabase.getInstance().getReference("RutaConductor");
+        refRutaConductor.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Log.e("key snapshot", dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -77,12 +100,13 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
            return;
         }
         mMap.setMyLocationEnabled(true);
-        String ruta=getIntent().getStringExtra("nombre");
+
         Ruta rutas=controladorRutas.consultarUnaRuta(ruta);
         parada=rutas.getParadas();
         for (int f=0;f<parada.size();f++){
@@ -124,7 +148,20 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-       if (item.getItemId() == R.id.mostrar_ruta){
+        for (int i = 0; i < parada.size(); i++){
+            if (i != parada.size()-1){
+                LatLng origen = new LatLng(parada.get(i).getUbicacionLat(), parada.get(i).getUbicacionLon());
+                LatLng destino = new LatLng(parada.get(i+1).getUbicacionLat(), parada.get(i+1).getUbicacionLon());
+
+                DirectionFinder finder = new DirectionFinder(this, origen, destino);
+                finder.peticionRutas();
+            }else{
+                break;
+            }
+
+
+        }
+     /*  if (item.getItemId() == R.id.mostrar_ruta){
            if (mLastLocation != null){
 
                LatLng origen = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
@@ -135,7 +172,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
            }else {
                Toast.makeText(this, "No se ha podido determinar tu ubicacion.", Toast.LENGTH_SHORT).show();
            }
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
