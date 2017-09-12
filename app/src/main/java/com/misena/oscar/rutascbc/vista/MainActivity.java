@@ -47,8 +47,7 @@ ModelAdmin administrador;
            rutas.get(0).addParada(new Paradas("Cuarta Con 21",rutas.get(0),10.465220, -73.232883));
            rutas.get(0).addParada(new Paradas("Colegio La Policia",rutas.get(0),10.458075, -73.243125));
            rutas.get(0).addParada(new Paradas("Rosita Davila",rutas.get(0),10.458404, -73.239400));
-
-
+           
            rutas.add(new Ruta("Villa Miriam Por Fuera"));
            rutas.get(1).addParada(new Paradas("Primera Parada",rutas.get(0),00000.000,0000.000));
            rutas.get(1).addParada(new Paradas("Segunda Parada",rutas.get(0),00000.000,0000.000));

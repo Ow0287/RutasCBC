@@ -18,7 +18,7 @@ public class ControladorAdministrador {
         Log.e("var que llega", usuario);
         boolean adminExiste;
         ModelAdmin modelAdmin=new Select().from(ModelAdmin.class)
-                .where("nombre = ?",usuario).orderBy("RANDOM()").executeSingle();
+                .where("nombre = ?",usuario).and("password = ?", contrasena).orderBy("RANDOM()").executeSingle();
 
         Log.e("validando", "admin");
         if (modelAdmin == null){
