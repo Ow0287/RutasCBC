@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.misena.oscar.rutascbc.vista.Chat">
+    tools:context="com.misena.oscar.rutascbc.vista.Chat"
+    android:background="@drawable/example">
 <android.support.design.widget.FloatingActionButton
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,8 +32,8 @@
             android:layout_width="260dp"
             android:layout_height="40dp"
             android:hint="@string/edt_chat"
-            android:textStyle="bold"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="40dp"
+            android:textStyle="bold"/>
     </android.support.design.widget.TextInputLayout>
     <ListView
         android:id="@+id/lista"
@@ -42,5 +43,5 @@
         android:divider="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 </RelativeLayout>

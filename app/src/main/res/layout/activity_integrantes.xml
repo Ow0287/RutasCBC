@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.misena.oscar.rutascbc.Integrantes">
+    tools:context="com.misena.oscar.rutascbc.Integrantes"
+    android:background="@drawable/example">
 <TextView
     android:id="@+id/integrante_osccar"
     android:layout_width="wrap_content"

@@ -4,7 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.misena.oscar.rutascbc.vista.Login"
+<<<<<<< Updated upstream
     >
+=======
+    android:background="@drawable/example">
+
+
+>>>>>>> Stashed changes
 
     <include layout="@layout/content_login" />
 
