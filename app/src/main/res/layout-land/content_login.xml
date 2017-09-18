@@ -23,9 +23,10 @@
         android:id="@+id/img_login_usuario"
         android:layout_width="70dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="65dp"
-        app:srcCompat="@mipmap/usuario" />
+        app:srcCompat="@mipmap/usuario"
+        android:layout_alignBottom="@+id/textInputLayout"
+        android:layout_alignLeft="@+id/img_login_contra"
+        android:layout_alignStart="@+id/img_login_contra" />
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,8 +42,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
             android:inputType="text"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -58,27 +58,34 @@
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:inputType="textPassword"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
         android:id="@+id/img_login_contra"
         android:layout_width="70dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="160dp"
-        app:srcCompat="@mipmap/iconokeys" />
+        app:srcCompat="@mipmap/iconokeys"
+        android:layout_alignTop="@+id/inputContra"
+        android:layout_alignLeft="@+id/txv_login"
+        android:layout_alignStart="@+id/txv_login"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp" />
 
     <Button
         android:id="@+id/btn_entrar"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="230dp"
         android:onClick="login"
         android:text="@string/btn_entrar"
         android:background="@drawable/selector_botones"
-        android:textColor="@color/cardview_light_background"/>
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginBottom="11dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp" />
 
     <Button
         android:id="@+id/btn_registrarse"
@@ -94,17 +101,20 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/img_login_contra"
-        android:layout_alignStart="@+id/img_login_contra"
-        android:layout_below="@+id/btn_registrarse" >
+        android:id="@+id/radioGroup"
+        android:layout_alignBottom="@+id/btn_entrar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp">
 
         <RadioButton
             android:id="@+id/radioAprendiz"
-            android:layout_width="wrap_content"
+            android:layout_width="97dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/aprendiz"
-            android:checked="true"/>
+            android:checked="true"
+            android:layout_marginTop="30dp"/>
 
         <RadioButton
             android:id="@+id/radioConductor"

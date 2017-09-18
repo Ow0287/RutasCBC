@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.misena.oscar.rutascbc.vista.Galeria"
+    android:background="@drawable/example">
+
+    <RelativeLayout
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="167dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/color_meenu"
+        android:onClick="validarAdmin"
+        android:orientation="horizontal"
+        tools:ignore="HardcodedText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="167dp">
+
+        <ImageView
+            android:id="@+id/img_agregar_titulacion"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            app:srcCompat="@mipmap/agregartitulacion" />
+
+        <TextView
+            android:id="@+id/txv_agregar_titulacion"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="70dp"
+            android:text="@string/txv_agregar_titulacion"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="@dimen/txv_tarjeta" />
+
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/lista_galeria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"></ListView>
+</RelativeLayout>

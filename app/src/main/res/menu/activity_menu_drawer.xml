@@ -15,6 +15,10 @@
             android:icon="@mipmap/iconochat"
             android:title="Chat" />
         <item
+            android:id="@+id/nav_integrantes"
+            android:icon="@mipmap/integran"
+            android:title="@string/integrantes"/>
+        <item
             android:id="@+id/nav_manage"
             android:icon="@mipmap/iconosalir"
             android:title="Salir" />

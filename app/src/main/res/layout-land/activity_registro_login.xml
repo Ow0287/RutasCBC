@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.misena.oscar.rutascbc.vista.RegistroLogin"
+    android:background="@drawable/example">
+    <TextView
+        android:id="@+id/txv_registro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:text="@string/txv_registro"
+        android:textSize="@dimen/txv_login"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/img_usuario"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        app:srcCompat="@mipmap/usuario"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/edt_nombre"
+        android:id="@+id/textInputLayout2"
+        android:layout_below="@+id/txv_registro"
+        android:layout_alignLeft="@+id/textInputLayout3"
+        android:layout_alignStart="@+id/textInputLayout3">
+
+        <EditText
+            android:id="@+id/edt_nombre"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:inputType="text"
+            android:textStyle="bold" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/img_email"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="130dp"
+        app:srcCompat="@mipmap/iconodeemail" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="@string/edt_correo"
+        android:id="@+id/textInputLayout3"
+        android:layout_below="@+id/textInputLayout2"
+        android:layout_alignLeft="@+id/textInputLayout5"
+        android:layout_alignStart="@+id/textInputLayout5">
+
+        <EditText
+            android:id="@+id/edt_correo"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="130dp"
+            android:inputType="textEmailAddress"
+            android:textStyle="bold" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/img_contra"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="193dp"
+        app:srcCompat="@mipmap/iconokeys" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayout3"
+        android:layout_alignLeft="@+id/textInputLayout4"
+        android:layout_alignStart="@+id/textInputLayout4"
+        android:layout_marginTop="14dp"
+        android:hint="@string/edt_contraseña"
+        android:id="@+id/textInputLayout5">
+
+        <EditText
+            android:id="@+id/edt_contrasena"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="190dp"
+            android:layout_centerHorizontal="true"
+            android:inputType="textPassword"
+
+            android:textStyle="bold"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/img_repetir_contra"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="255dp"
+        app:srcCompat="@mipmap/iconokeys" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputLayout3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp"
+        android:hint="@string/edt_confirmar_contraseña"
+        android:id="@+id/textInputLayout4">
+
+        <EditText
+            android:id="@+id/edt_repetir_contrasena"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="250dp"
+            android:layout_centerHorizontal="true"
+            android:inputType="textPassword"
+
+            android:textStyle="bold"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btn_registrarse"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:onClick="registro"
+        android:text="@string/btn_registrarse"
+        android:background="@drawable/selector_botones"
+        android:textColor="@color/cardview_light_background"
+        android:layout_alignBottom="@+id/img_repetir_contra"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+
+</RelativeLayout>
