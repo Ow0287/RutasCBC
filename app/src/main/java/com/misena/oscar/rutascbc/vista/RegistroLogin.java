@@ -1,8 +1,6 @@
 package com.misena.oscar.rutascbc.vista;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -60,13 +58,11 @@ public class RegistroLogin extends AppCompatActivity {
 
         if (item.getItemId() == android.R.id.home){
 
-            startActivity(new Intent(RegistroLogin.this, MenuRutas.class));
+            startActivity(new Intent(RegistroLogin.this, Login.class));
             finish();
         }
 
         return super.onOptionsItemSelected(item);
 
     }
-
-
 }
