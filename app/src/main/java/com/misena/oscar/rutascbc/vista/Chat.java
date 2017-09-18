@@ -99,6 +99,7 @@ public class Chat extends AppCompatActivity {
             MensajeChat mensaje = new MensajeChat(edtMensajeChat.getText().toString(), correo);
             refChat.push().setValue(mensaje);
             // Aqui se envia el mensaje
+            edtMensajeChat.setText("");
         }
     }
 

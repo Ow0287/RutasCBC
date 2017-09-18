@@ -2,6 +2,7 @@ package com.misena.oscar.rutascbc.vista;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -23,10 +24,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,6 +61,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
     SharedPreferences shared;
     DatabaseReference refRutaConductor, refConductor;
     String ruta;
+    Marker busMarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +101,63 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void actualizarBus(String value) {
+
+        Log.e("en ", "actualizarBus");
+        DatabaseReference bus = FirebaseDatabase.getInstance()
+                .getReference("Conductor").child(value);
+
+        bus.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                Log.e("chlid","changed");
+                Log.e("snapshot", dataSnapshot.getKey());
+                //Crear nuevo marcador en mapa
+                try{
+
+                    Double latBus = (Double)dataSnapshot.child("latitud").getValue();
+                    Double lngBus = (Double)dataSnapshot.child("longitud").getValue();
+
+                    LatLng busLatLng = new LatLng(latBus, lngBus);
+
+                    if (busMarker == null){
+
+                        busMarker = mMap.addMarker(new MarkerOptions().position(busLatLng).title("Bus")
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                        );
+                    }else{
+
+                        busMarker.setPosition(busLatLng);
+                    }
+
+                }catch(Exception e){
+
+                    e.printStackTrace();
+                    Toast.makeText(Mapa.this, "Bus no esta activo", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
@@ -157,31 +219,24 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        for (int i = 0; i < parada.size(); i++){
-            if (i != parada.size()-1){
-                LatLng origen = new LatLng(parada.get(i).getUbicacionLat(), parada.get(i).getUbicacionLon());
-                LatLng destino = new LatLng(parada.get(i+1).getUbicacionLat(), parada.get(i+1).getUbicacionLon());
+        if (item.getItemId() == R.id.mostrar_ruta){
 
-                DirectionFinder finder = new DirectionFinder(this, origen, destino);
-                finder.peticionRutas();
-            }else{
-                break;
-            }
+            for (int i = 0; i < parada.size(); i++){
+                if (i != parada.size()-1){
+                    LatLng origen = new LatLng(parada.get(i).getUbicacionLat(), parada.get(i).getUbicacionLon());
+                    LatLng destino = new LatLng(parada.get(i+1).getUbicacionLat(), parada.get(i+1).getUbicacionLon());
 
-
+                    DirectionFinder finder = new DirectionFinder(this, origen, destino);
+                    finder.peticionRutas();
+                }else{
+                    break;
+                }
         }
-     /*  if (item.getItemId() == R.id.mostrar_ruta){
-           if (mLastLocation != null){
+        }else if(item.getItemId() == android.R.id.home){
 
-               LatLng origen = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-               LatLng destino = paradaMasCercana();
-
-               DirectionFinder finder = new DirectionFinder(this, origen, destino);
-               finder.peticionRutas();
-           }else {
-               Toast.makeText(this, "No se ha podido determinar tu ubicacion.", Toast.LENGTH_SHORT).show();
-           }
-        }*/
+            startActivity(new Intent(Mapa.this, Rutas.class));
+            finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -203,6 +258,14 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
         latLngClosestStop = new LatLng(parada.get(indiceMenorDistancia).getUbicacionLat()
         , parada.get(indiceMenorDistancia).getUbicacionLon());
         return latLngClosestStop;
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        DatabaseReference.goOffline();
+        client.disconnect();
+        super.onDestroy();
     }
 
     @Override
