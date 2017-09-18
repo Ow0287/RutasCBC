@@ -83,6 +83,9 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Log.e("key snapshot", dataSnapshot.getKey());
+                Log.e("cedula conductor", (String) dataSnapshot.child(ruta).getValue());
+
+                actualizarBus((String) dataSnapshot.child(ruta).getValue());
             }
 
             @Override
@@ -90,6 +93,11 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
 
             }
         });
+    }
+
+    private void actualizarBus(String value) {
+
+
     }
 
     @Override
@@ -122,6 +130,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
