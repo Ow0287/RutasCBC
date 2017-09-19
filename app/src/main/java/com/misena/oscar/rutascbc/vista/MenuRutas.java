@@ -19,6 +19,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.misena.oscar.rutascbc.Integrantes;
 import com.misena.oscar.rutascbc.R;
 
 public class MenuRutas extends AppCompatActivity
@@ -54,8 +56,6 @@ public class MenuRutas extends AppCompatActivity
 
         FirebaseDatabase dataBase = FirebaseDatabase.getInstance();
         refLOgin = dataBase.getReference("Conductor/" + cedulaConductor);
-
-
 
         if (client == null) {
             client = new GoogleApiClient.Builder(MenuRutas.this)
@@ -160,6 +160,9 @@ public class MenuRutas extends AppCompatActivity
 
             } else if (id == R.id.nav_manage) {
                 finish();
+            } else if (id == R.id.nav_integrantes){
+                startActivity(new Intent(MenuRutas.this, Integrantes.class));
+                finish();
             }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -228,8 +231,8 @@ public class MenuRutas extends AppCompatActivity
     private void actualizarPosicion(Location location) {
 
         if (location != null){
-            refLOgin.child("latitud").setValue(location.getLatitude());
-            refLOgin.child("longitud").setValue(location.getLongitude());
+            refLOgin.child("ubicacion").child("latitud").setValue(location.getLatitude());
+            refLOgin.child("ubicacion").child("longitud").setValue(location.getLongitude());
         }else{
             Log.e("la location", "es NULL");
         }
