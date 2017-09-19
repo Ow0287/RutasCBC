@@ -53,10 +53,6 @@ ModelAdmin administrador;
            rutas.get(0).addParada(new Paradas("Estacion de Servicio ECOS",rutas.get(0),10.452033,-73.242944));
            rutas.get(0).addParada(new Paradas("C.B.C",rutas.get(0),10.406489,-73.236519));
 
-
-
-
-           
            rutas.add(new Ruta("Los Poporos-Villa Miriam Por Fuera"));
            rutas.get(1).addParada(new Paradas("Los Poporos",rutas.get(1),10.474523,-73.262911));
            rutas.get(1).addParada(new Paradas("Casa del Abuelo",rutas.get(1),10.471158,-73.260592));
@@ -105,8 +101,8 @@ ModelAdmin administrador;
            rutas.get(4).addParada(new Paradas("Colegio Fransisco Molina",rutas.get(4),10.460477,-73.229034));
            rutas.get(4).addParada(new Paradas("Entrada los Cocos",rutas.get(4),10.457772,-73.233034));
            rutas.get(4).addParada(new Paradas("C.C Mayales",rutas.get(4),10.455839,-73.242743));
-           rutas.get(3).addParada(new Paradas("Terminal",rutas.get(4),10.438023,-73.245086));
-           rutas.get(3).addParada(new Paradas("C.B.C",rutas.get(4),10.406489,-73.236519));
+           rutas.get(4).addParada(new Paradas("Terminal",rutas.get(4),10.438023,-73.245086));
+           rutas.get(4).addParada(new Paradas("C.B.C",rutas.get(4),10.406489,-73.236519));
 
 
            controladorRutas.llenarSitios(rutas);
