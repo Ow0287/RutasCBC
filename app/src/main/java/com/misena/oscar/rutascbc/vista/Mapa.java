@@ -87,10 +87,16 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Log.e("key snapshot", dataSnapshot.getKey());
-                Log.e("cedula conductor", (String) dataSnapshot.child(ruta).getValue());
+                try{
+                    Log.e("key snapshot", dataSnapshot.getKey());
+                    Log.e("cedula conductor", (String) dataSnapshot.child(ruta).getValue());
 
-                actualizarBus((String) dataSnapshot.child(ruta).getValue());
+                    actualizarBus((String) dataSnapshot.child(ruta).getValue());
+                }catch (Exception e){
+
+                    Toast.makeText(Mapa.this, "No hay bus en esta ruta", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
@@ -130,9 +136,15 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
                         busMarker = mMap.addMarker(new MarkerOptions().position(busLatLng).title("Bus")
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                         );
+                        busMarker.showInfoWindow();
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(busLatLng,16f));
+
                     }else{
 
                         busMarker.setPosition(busLatLng);
+                        busMarker.showInfoWindow();
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(busLatLng,16f));
+
                     }
 
                 }catch(Exception e){
