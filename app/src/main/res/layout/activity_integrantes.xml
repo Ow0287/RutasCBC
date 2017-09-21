@@ -38,4 +38,12 @@
         android:text="@string/integrant_loraines"
         android:layout_marginTop="170dp"
         android:textColor="@color/color_meenu"/>
+    <TextView
+        android:id="@+id/txv_ficha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/txv_ficha"
+        android:textColor="@color/color_meenu" />
 </RelativeLayout>
