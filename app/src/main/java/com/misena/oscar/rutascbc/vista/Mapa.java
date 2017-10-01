@@ -134,7 +134,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
                     if (busMarker == null){
 
                         busMarker = mMap.addMarker(new MarkerOptions().position(busLatLng).title("Bus")
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.bus))
                         );
                         busMarker.showInfoWindow();
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(busLatLng,16f));
@@ -152,7 +152,6 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback
                     e.printStackTrace();
                     Toast.makeText(Mapa.this, "Bus no esta activo", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override

@@ -53,7 +53,7 @@ ModelAdmin administrador;
            rutas.get(0).addParada(new Paradas("Estacion de Servicio ECOS",rutas.get(0),10.452033,-73.242944));
            rutas.get(0).addParada(new Paradas("C.B.C",rutas.get(0),10.406489,-73.236519));
 
-           rutas.add(new Ruta("Los Poporos-Villa Miriam Por Fuera"));
+           rutas.add(new Ruta("Los Poporos/Villa Miriam"));
            rutas.get(1).addParada(new Paradas("Los Poporos",rutas.get(1),10.474523,-73.262911));
            rutas.get(1).addParada(new Paradas("Casa del Abuelo",rutas.get(1),10.471158,-73.260592));
            rutas.get(1).addParada(new Paradas("COM",rutas.get(1),10.470620, -73.257867));
@@ -79,7 +79,7 @@ ModelAdmin administrador;
 
 
 
-           rutas.add(new Ruta("RUTA COOMEVA – Kra 4TA - MAYALES"));
+           rutas.add(new Ruta("La Canoa/cc Mayales"));
            rutas.get(3).addParada(new Paradas("Tienda La Canoa",rutas.get(3),10.480833,-73.244430));
            rutas.get(3).addParada(new Paradas("4ta con 18 esquina",rutas.get(3),10.475033,-73.240195));
            rutas.get(3).addParada(new Paradas("4ta-Piedra Blanca",rutas.get(3),10.471006,-73.237277));
